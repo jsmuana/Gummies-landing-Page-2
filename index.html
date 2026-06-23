@@ -943,28 +943,27 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
   opacity:0;transition:transform .35s var(--ease-bounce),opacity .3s;
   max-height:90svh;overflow-y:auto;
 }
-/* Checkout modal - scrollable form, fixed button */
-.checkout-modal{
-  padding:0;display:flex;flex-direction:column;
-  max-height:90svh;overflow:hidden;
+/* Checkout specific - form scrolls, button fixed */
+#checkoutModal{
+  padding:0;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  max-height:92svh;
 }
-.checkout-scroll{
-  overflow-y:auto;-webkit-overflow-scrolling:touch;
-  flex:1;padding:0;
+#checkoutModal .checkout-head{flex-shrink:0}
+#checkoutModal .checkout-summary{flex-shrink:0}
+#checkoutModal form{
+  flex:1;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  padding:20px 28px;
 }
-.checkout-sticky-btn{
-  padding:16px 24px;
-  background:#fff;
-  border-top:1px solid rgba(0,0,0,.08);
+#checkoutModal .confirm-btn-wrap{
   flex-shrink:0;
-}
-.checkout-sticky-btn button{
-  width:100%;padding:16px;
-  background:linear-gradient(135deg,var(--r500),var(--r600));
-  color:#fff;border:none;border-radius:100px;
-  font-family:'Manrope',sans-serif;font-size:16px;font-weight:800;
-  cursor:pointer;
-  box-shadow:0 4px 20px rgba(239,78,113,.4);
+  padding:14px 24px 20px;
+  background:#fff;
+  border-top:1px solid rgba(0,0,0,.07);
 }
 .modal.open{display:block;transform:translate(-50%,-50%) scale(1);opacity:1}
 .modal .close-btn{position:absolute;top:20px;right:20px}
@@ -1596,47 +1595,38 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
 
 <!-- Checkout Modal -->
 <div class="modal checkout-modal" id="checkoutModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
-  <button class="close-btn modal-close" data-modal="checkoutModal" type="button" aria-label="Close" style="position:absolute;top:12px;right:12px;z-index:1">×</button>
-  
-  <!-- Scrollable area -->
-  <div class="checkout-scroll">
-    <div class="checkout-head">
-      <div class="sec-label">Secure checkout</div>
-      <h2 id="checkoutTitle">Complete your order</h2>
-      <p>We'll contact you to confirm delivery.</p>
-    </div>
-    <div class="checkout-summary">
-      <span id="checkoutQty">1 Bottle</span>
-      <b id="checkoutTotal">₱700 (shipping incl.)</b>
-    </div>
-    <form id="checkoutForm" novalidate style="padding:20px 24px">
-      <label style="display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:12px">Full Name<input name="name" autocomplete="name" required placeholder="Juan Dela Cruz" style="padding:12px 14px;border:1.5px solid rgba(0,0,0,.1);border-radius:8px;font-size:15px;outline:none;font-family:inherit"></label>
-      <label style="display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:12px">Mobile Number<input name="phone" inputmode="tel" required placeholder="09XX XXX XXXX" style="padding:12px 14px;border:1.5px solid rgba(0,0,0,.1);border-radius:8px;font-size:15px;outline:none;font-family:inherit"></label>
-      <label style="display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:12px">Complete Address (House no., Street, Barangay)<textarea name="address" required placeholder="House no., street, barangay" style="padding:12px 14px;border:1.5px solid rgba(0,0,0,.1);border-radius:8px;font-size:15px;outline:none;font-family:inherit;min-height:72px;resize:none"></textarea></label>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
-        <label style="display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft)">City<input name="city" required placeholder="Davao City" style="padding:12px 14px;border:1.5px solid rgba(0,0,0,.1);border-radius:8px;font-size:15px;outline:none;font-family:inherit"></label>
-        <label style="display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft)">Province<input name="province" required placeholder="Davao del Sur" style="padding:12px 14px;border:1.5px solid rgba(0,0,0,.1);border-radius:8px;font-size:15px;outline:none;font-family:inherit"></label>
-      </div>
-      <label style="display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:12px">Landmark (para sa JnT rider)<input name="landmark" placeholder="e.g. Malapit sa simbahan, may asul na gate" style="padding:12px 14px;border:1.5px solid rgba(0,0,0,.1);border-radius:8px;font-size:15px;outline:none;font-family:inherit"></label>
-      <label style="display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:12px">Payment Method
-        <select name="payment" required style="padding:12px 14px;border:1.5px solid rgba(0,0,0,.1);border-radius:8px;font-size:15px;outline:none;font-family:inherit;background:#fff">
-          <option value="">Select payment</option>
-          <option>Cash on Delivery</option>
-          <option>GCash</option>
-          <option>Bank Transfer</option>
-        </select>
-      </label>
-      <label style="display:flex;flex-direction:row;gap:10px;align-items:flex-start;font-size:12px;color:var(--ink-soft);margin-bottom:12px">
-        <input type="checkbox" name="consent" required style="width:16px;height:16px;margin-top:2px;flex-shrink:0;accent-color:var(--r500)">
-        <span>I agree to share my information for order processing and delivery confirmation.</span>
-      </label>
-      <div style="color:var(--r600);font-size:13px;font-weight:600;margin-bottom:8px" id="formErr"></div>
-    </form>
+  <button class="close-btn modal-close" data-modal="checkoutModal" type="button" aria-label="Close">×</button>
+  <div class="checkout-head">
+    <div class="sec-label">Secure checkout</div>
+    <h2 id="checkoutTitle">Complete your order</h2>
+    <p>We'll contact you to confirm delivery.</p>
   </div>
-
-  <!-- Fixed button at bottom - always visible -->
-  <div class="checkout-sticky-btn">
-    <button type="button" id="submitOrderBtn">✓ Confirm My Order</button>
+  <div class="checkout-summary">
+    <span id="checkoutQty">1 bottle</span>
+    <b id="checkoutTotal">₱700 total</b>
+  </div>
+  <form id="checkoutForm" novalidate>
+    <label>Full Name<input name="name" autocomplete="name" required placeholder="Juan Dela Cruz"></label>
+    <label>Mobile Number<input name="phone" inputmode="tel" autocomplete="tel" required placeholder="09XX XXX XXXX"></label>
+    <label class="wide">Complete Address (House no., Street, Barangay)<textarea name="address" autocomplete="street-address" required placeholder="House no., street, barangay"></textarea></label>
+    <label>City<input name="city" autocomplete="address-level2" required placeholder="Davao City"></label>
+    <label>Province<input name="province" autocomplete="address-level1" required placeholder="Davao del Sur"></label>
+    <label class="wide">Landmark (para sa rider)<input name="landmark" placeholder="e.g. Malapit sa simbahan, may asul na gate"></label>
+    <label class="wide">Payment<select name="payment" required>
+        <option value="">Cash on Delivery / GCash / Bank</option>
+        <option>Cash on Delivery</option>
+        <option>GCash</option>
+        <option>Bank Transfer</option>
+      </select>
+    </label>
+    <label class="consent wide">
+      <input type="checkbox" name="consent" required>
+      <span>I agree to share my information for order processing and delivery.</span>
+    </label>
+    <div class="form-err wide" id="formErr"></div>
+  </form>
+  <div class="confirm-btn-wrap">
+    <button class="btn btn-primary btn-full" type="button" id="confirmOrderBtn" style="padding:16px;font-size:16px;font-weight:800">✓ Confirm My Order</button>
   </div>
 </div>
 
@@ -1776,9 +1766,10 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
   document.getElementById('acceptUpsell').addEventListener('click',function(){setQty(qty+1);closeModal('upsellModal');openModal('checkoutModal');});
   document.getElementById('skipUpsell').addEventListener('click',function(){closeModal('upsellModal');openModal('checkoutModal');});
 
-  // Fixed confirm button triggers form submit
-  document.getElementById('submitOrderBtn').addEventListener('click', function(){
-    document.getElementById('checkoutForm').dispatchEvent(new Event('submit', {cancelable:true, bubbles:true}));
+  // Confirm button submits the form
+  document.getElementById('confirmOrderBtn').addEventListener('click', function(){
+    var form = document.getElementById('checkoutForm');
+    form.dispatchEvent(new Event('submit', {bubbles:true, cancelable:true}));
   });
 
   document.querySelectorAll('.modal-close').forEach(function(btn){
