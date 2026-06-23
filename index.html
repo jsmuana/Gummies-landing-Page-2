@@ -1140,28 +1140,29 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
   stroke:var(--r500);
 }
 
-#checkoutForm{display:grid;grid-template-columns:1fr 1fr;gap:7px 14px}
+#checkoutForm{display:grid;grid-template-columns:1fr 1fr;gap:14px 16px}
 #checkoutForm label{
-  display:flex;flex-direction:column;gap:6px;
-  font-size:11px;
+  display:flex;flex-direction:column;gap:8px;
+  font-size:13px;
   font-weight:700;
-  letter-spacing:.04em;
+  letter-spacing:.02em;
   text-transform:uppercase;
   color:var(--ink-soft);
+  margin-bottom:4px;
 }
 #checkoutForm label.wide{grid-column:1/-1}
 #checkoutForm input,#checkoutForm textarea,#checkoutForm select{
-  height:40px;
-  padding:9px 13px;
-  border:1px solid var(--r400);
-  border-radius:2px;
-  font-family:'DM Sans',sans-serif;font-size:13px;color:#333;background:#fff;
+  height:52px;
+  padding:14px 16px;
+  border:1.5px solid var(--r400);
+  border-radius:8px;
+  font-family:'DM Sans',sans-serif;font-size:16px;color:#333;background:#fff;
   transition:border-color .2s,box-shadow .2s;outline:none;
   width:100%;
   box-sizing:border-box;
 }
 #checkoutForm input:focus,#checkoutForm textarea:focus,#checkoutForm select:focus{border-color:var(--r500);box-shadow:0 0 0 3px rgba(239,78,113,.12)}
-#checkoutForm textarea{resize:none;min-height:38px}
+#checkoutForm textarea{resize:none;min-height:80px;height:auto}
 #checkoutForm .consent{flex-direction:row;gap:10px;align-items:flex-start;font-size:12px;text-transform:none;letter-spacing:0;color:#555;margin-top:2px}
 #checkoutForm .consent input{width:18px;height:18px;margin-top:1px;flex-shrink:0;accent-color:var(--r500)}
 .form-err{color:var(--r600);font-size:13px;font-weight:600}
