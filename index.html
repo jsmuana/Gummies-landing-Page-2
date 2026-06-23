@@ -309,6 +309,144 @@ em{font-style:italic;color:var(--r500)}
 }
 
 /* ============================================================
+   VSL SECTION
+   ============================================================ */
+.vsl-section{
+  background:linear-gradient(160deg,var(--ink) 0%,var(--r900) 100%);
+  padding:96px 48px;
+  position:relative;overflow:hidden;
+}
+.vsl-section::before{
+  content:'';position:absolute;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(239,78,113,.15),transparent 65%);
+  border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);
+  pointer-events:none;
+}
+.vsl-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.vsl-head{text-align:center;margin-bottom:48px}
+.vsl-head .sec-label{color:var(--r400)}
+.vsl-head .sec-label::before{background:var(--r400)}
+.vsl-head h2{font-size:clamp(26px,3.5vw,44px);font-weight:900;letter-spacing:-.03em;color:#fff;margin-bottom:12px}
+.vsl-head h2 em{color:var(--r400)}
+.vsl-head p{font-size:16px;color:rgba(255,255,255,.5);max-width:560px;margin:0 auto}
+
+.vsl-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:40px;align-items:start;
+}
+
+/* Video placeholder — will be replaced with actual embed */
+.vsl-video-wrap{
+  position:relative;border-radius:var(--rad-xl);overflow:hidden;
+  background:#000;
+  aspect-ratio:9/16;
+  max-width:360px;margin:0 auto;
+  box-shadow:0 24px 60px rgba(0,0,0,.4);
+}
+.vsl-placeholder{
+  width:100%;height:100%;
+  background:linear-gradient(145deg,#1a0a10,#2d0a18);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:16px;padding:40px;text-align:center;
+}
+.vsl-play-btn{
+  width:72px;height:72px;border-radius:50%;
+  background:linear-gradient(135deg,var(--r400),var(--r600));
+  display:grid;place-items:center;
+  font-size:28px;color:#fff;
+  box-shadow:0 8px 32px rgba(239,78,113,.5);
+  cursor:pointer;
+  transition:transform .3s var(--ease-bounce),box-shadow .3s;
+  border:3px solid rgba(255,255,255,.2);
+}
+.vsl-play-btn:hover{transform:scale(1.1);box-shadow:0 12px 40px rgba(239,78,113,.6)}
+.vsl-placeholder h3{font-size:18px;font-weight:800;color:#fff;line-height:1.3}
+.vsl-placeholder p{font-size:13px;color:rgba(255,255,255,.5)}
+.sound-on-badge{
+  position:absolute;top:16px;left:50%;transform:translateX(-50%);
+  background:linear-gradient(135deg,#ef4444,#dc2626);
+  color:#fff;font-size:12px;font-weight:900;letter-spacing:.06em;
+  padding:6px 16px;border-radius:100px;
+  display:flex;align-items:center;gap:6px;
+  white-space:nowrap;
+  box-shadow:0 4px 12px rgba(239,68,68,.4);
+}
+.vsl-iframe-wrap{
+  position:relative;border-radius:var(--rad-xl);overflow:hidden;
+  background:#000;aspect-ratio:9/16;
+  max-width:360px;margin:0 auto;
+  box-shadow:0 24px 60px rgba(0,0,0,.4);
+}
+.vsl-iframe-wrap iframe{
+  width:100%;height:100%;border:none;display:block;
+}
+
+/* Right side content */
+.vsl-content{display:flex;flex-direction:column;gap:24px;padding-top:8px}
+.doc-card{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--rad-lg);padding:20px 24px;
+  display:flex;align-items:center;gap:16px;
+}
+.doc-avatar{
+  width:52px;height:52px;border-radius:50%;
+  background:linear-gradient(135deg,var(--r400),var(--r600));
+  display:grid;place-items:center;
+  font-size:22px;flex-shrink:0;
+  border:2px solid rgba(255,255,255,.2);
+}
+.doc-card b{display:block;font-size:15px;font-weight:800;color:#fff;margin-bottom:3px}
+.doc-card span{font-size:12px;color:rgba(255,255,255,.5)}
+
+.stat-card{
+  background:rgba(239,78,113,.15);
+  border:1px solid rgba(239,78,113,.3);
+  border-radius:var(--rad-lg);padding:20px 24px;
+}
+.stat-card b{display:block;font-size:36px;font-weight:900;color:var(--r400);letter-spacing:-.02em;margin-bottom:4px}
+.stat-card p{font-size:13px;color:rgba(255,255,255,.65);line-height:1.6}
+
+.vsl-benefits-list{display:flex;flex-direction:column;gap:12px}
+.vsl-benefit-item{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:14px 16px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:var(--rad);
+}
+.vsl-benefit-item span{
+  width:28px;height:28px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--r400),var(--r600));
+  border-radius:8px;display:grid;place-items:center;
+  font-size:14px;
+}
+.vsl-benefit-item div b{display:block;font-size:13px;font-weight:800;color:#fff;margin-bottom:2px}
+.vsl-benefit-item div p{font-size:12px;color:rgba(255,255,255,.5);line-height:1.5}
+
+.vsl-age-badge{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--rad);padding:16px 20px;
+  display:flex;align-items:center;gap:12px;
+}
+.vsl-age-badge span{font-size:24px}
+.vsl-age-badge b{display:block;font-size:14px;font-weight:800;color:#fff;margin-bottom:3px}
+.vsl-age-badge p{font-size:12px;color:rgba(255,255,255,.5)}
+
+@media(max-width:1024px){
+  .vsl-grid{grid-template-columns:1fr;gap:32px}
+  .vsl-iframe-wrap,.vsl-video-wrap{max-width:320px}
+  .vsl-section{padding:64px 32px}
+}
+@media(max-width:768px){
+  .vsl-section{padding:64px 20px}
+  .vsl-iframe-wrap,.vsl-video-wrap{max-width:280px}
+  .stat-card b{font-size:28px}
+}
+
+/* ============================================================
    PROBLEM SECTION
    ============================================================ */
 .problem-section{
@@ -948,7 +1086,7 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
     <span>Dr. Vita <small>premium</small></span>
   </a>
   <nav class="nav-links" aria-label="Main navigation">
-    <a href="#benefits">Why Dr. Vita</a>
+    <a href="#doctor">Doc's Message</a><a href="#benefits">Why Dr. Vita</a>
     <a href="#testimonials">Reviews</a>
     <a href="#shop">Shop</a>
     <a href="#faq">FAQ</a>
@@ -1015,6 +1153,86 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
   <div class="countdown-cta">↓ Order before it expires!</div>
 </div>
 
+<!-- ======== VSL SECTION ======== -->
+<section class="vsl-section" id="doctor">
+  <div class="vsl-inner">
+    <div class="vsl-head reveal">
+      <div class="sec-label">Doctor's Recommendation</div>
+      <h2>Pakinggan ang isang <em>Doctor</em><br>tungkol sa iyong anak</h2>
+      <p>Ayon kay Doc Cecille Catapang — ang mga batang ito ay nangangailangan ng tamang brain at body nutrition support.</p>
+    </div>
+
+    <div class="vsl-grid">
+
+      <!-- VIDEO LEFT -->
+      <div class="reveal">
+        <div class="vsl-video-wrap" id="vslVideoWrap">
+          <div class="sound-on-badge">🔊 SOUND ON</div>
+          <div class="vsl-placeholder" id="vslPlaceholder">
+            <div class="vsl-play-btn" id="vslPlayBtn">▶</div>
+            <h3>I-click para panoorin ang mensahe ni Doc Cecille</h3>
+            <p>3 minutes · Tagalog · May subtitles</p>
+          </div>
+        </div>
+        <p style="text-align:center;margin-top:16px;font-size:12px;color:rgba(255,255,255,.35);font-style:italic">* I-upload ang video link para maging live</p>
+      </div>
+
+      <!-- CONTENT RIGHT -->
+      <div class="vsl-content reveal d1">
+
+        <!-- Doctor card -->
+        <div class="doc-card">
+          <div class="doc-avatar">👩‍⚕️</div>
+          <div>
+            <b>Dr. Cecille Catapang</b>
+            <span>Wellness Advocate · Health Talk</span>
+          </div>
+        </div>
+
+        <!-- Stat -->
+        <div class="stat-card">
+          <b>91%</b>
+          <p>ng mga batang Pilipino na 9-13 years old ay <strong style="color:#fff">hindi pa proficient</strong> — at isa sa dahilan ay kulang sa brain-supporting nutrition.</p>
+        </div>
+
+        <!-- Key benefits from video -->
+        <div class="vsl-benefits-list">
+          <div class="vsl-benefit-item">
+            <span>🧠</span>
+            <div><b>DHA — Brain Development</b><p>Para sa memory, focus, at eye health ng inyong anak.</p></div>
+          </div>
+          <div class="vsl-benefit-item">
+            <span>⚡</span>
+            <div><b>Vitamin B1, B2, B6, B12</b><p>Nagpapalakas ng nerves, energy, mood, at immune defense.</p></div>
+          </div>
+          <div class="vsl-benefit-item">
+            <span>🛡️</span>
+            <div><b>Zinc + Probiotics</b><p>Para sa mas malakas na resistensya, digestion, at gut health.</p></div>
+          </div>
+          <div class="vsl-benefit-item">
+            <span>💬</span>
+            <div><b>Boost Communication Skills</b><p>Tumutulong sa speech, problem-solving, at memory ng bata.</p></div>
+          </div>
+        </div>
+
+        <!-- Age + dosage badge -->
+        <div class="vsl-age-badge">
+          <span>👶</span>
+          <div>
+            <b>Safe for kids 4–13 years old</b>
+            <p>1–2 gummies per day · 30 pieces per bottle · 2 weeks to 1 month supply</p>
+          </div>
+        </div>
+
+        <a class="btn btn-primary" href="#shop" style="text-align:center">
+          Subukan Na Po — ₱700 lang <span class="btn-arrow">→</span>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ======== STORY ======== -->
 <section class="story" id="story">
   <div class="story-grid">
@@ -1045,7 +1263,7 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
     <div class="problem-head reveal">
       <div class="sec-label">Para sa mga nag-aalalang magulang</div>
       <h2>Napapansin mo ba ito<br>sa iyong <em>anak?</em></h2>
-      <p>Maraming parents ang nakaranas nito — at hindi ka nag-iisa. Baka kulang lang sa DHA at B-Vitamins ang iyong anak.</p>
+      <p>Lagi bang walang gana, tinatamad pumasok, hirap mag-concentrate? <strong>Hindi normal yan</strong> — sign na yan ng mas malala pang problema sa growth, development, at learning ng iyong anak.</p>
     </div>
 
     <div class="problem-grid">
@@ -1095,10 +1313,10 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
 
     <div class="problem-solution reveal">
       <div>
-        <h3>Ayon sa mga eksperto — kulang sa DHA at B-Vitamins ang karamihan sa mga batang ito.</h3>
-        <p>Dr. Vita DHA Gummies ay specially formulated para tulungan ang mga batang nangangailangan ng daily brain at body nutrition support — masustansya, masarap, at loved by kids! 🍓</p>
+        <h3>"Dr. Vita DHA Gummies is not a simple vitamin — it is an <em style="color:#ffd6df">all-in-one support</em> para sa brain and immunity ng ating mga anak."</h3>
+        <p style="color:rgba(255,255,255,.75);margin-top:8px;font-size:14px">— Dr. Cecille Catapang, Wellness Advocate</p>
       </div>
-      <a class="btn" href="#shop">Subukan Na Po → <span class="btn-arrow">→</span></a>
+      <a class="btn" href="#shop" style="background:#fff;color:var(--r600);flex-shrink:0">Order Na Po <span class="btn-arrow">→</span></a>
     </div>
 
   </div>
