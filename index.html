@@ -1089,8 +1089,10 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
 /* ============================================================
    REVEAL
    ============================================================ */
-.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s var(--ease-smooth),transform .7s var(--ease-smooth)}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .6s var(--ease-smooth),transform .6s var(--ease-smooth)}
 .reveal.on{opacity:1;transform:none}
+/* Fallback - if JS fails, show content */
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
 
 /* ============================================================
@@ -1151,6 +1153,7 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
   .benefit-grid{grid-template-columns:1fr 1fr}
 }
 </style>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
 
@@ -1180,7 +1183,7 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
 <section class="hero" id="home">
   <div class="hero-blob hero-blob-1"></div>
   <div class="hero-blob hero-blob-2"></div>
-  <div class="hero-copy reveal">
+  <div class="hero-copy">
     <div class="eyebrow"><span></span>Daily nutrition, made delightful</div>
     <h1 class="hero-h1">A little gummy.<br><em>A lot of care.</em></h1>
     <p>Strawberry-flavored DHA with B-Vitamins in a kid-friendly food supplement made for simpler, happier daily routines.</p>
@@ -1194,7 +1197,7 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
       <span><b>🍓</b>strawberry</span>
     </div>
   </div>
-  <div class="hero-product reveal d2">
+  <div class="hero-product">
     <div class="product-halo"></div>
     <div class="gummies-orbit"><img src="assets/img_01.png" alt=""></div>
     <div class="bottle-wrap">
