@@ -1796,7 +1796,7 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
     else if(!addr)err='Please enter your delivery address.';
     else if(!city)err='Please enter your city.';
     else if(!prov)err='Please enter your province.';
-    else if(!pay)err='Please select a payment method.';
+
     else if(!consent)err='Please agree to the consent to proceed.';
     document.getElementById('formErr').textContent=err;
     if(err)return;
@@ -1807,7 +1807,7 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
     document.getElementById('orderRef').textContent=ref;
     document.getElementById('confirmedQty').textContent=finalLabel;
     document.getElementById('confirmedTotal').textContent=fmt(finalPrice)+' (incl. shipping)';
-    document.getElementById('confirmedPay').textContent=pay;
+    document.getElementById('confirmedPay').textContent=fd.get('payment')||'Cash on Delivery';
     console.log('[Dr. Vita Order]',{ref:ref,name:name,phone:phone,address:addr+', '+city+', '+prov,pack:currentPackName,qty:cartQty,unitPrice:currentPackPrice,total:finalPrice,payment:pay});
     closeModal('checkoutModal');openModal('confirmModal');
     console.log('[Dr. Vita Order]',{ref:ref,name:name,phone:phone,address:addr+', '+city+', '+prov,qty:qty,total:tot(qty),payment:pay});
