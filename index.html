@@ -941,7 +941,7 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
   padding:40px 36px;
   box-shadow:0 32px 80px rgba(0,0,0,.22);
   opacity:0;transition:transform .35s var(--ease-bounce),opacity .3s;
-  max-height:92svh;overflow-y:auto;-webkit-overflow-scrolling:touch;
+  max-height:90svh;overflow-y:auto;
 }
 .modal.open{display:block;transform:translate(-50%,-50%) scale(1);opacity:1}
 .modal .close-btn{position:absolute;top:20px;right:20px}
@@ -960,10 +960,7 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
   box-shadow:0 4px 12px rgba(239,78,113,.4);
 }
 
-.checkout-modal{padding:0;overflow:hidden;display:flex;flex-direction:column;max-height:88svh}
-.checkout-modal .checkout-head{flex-shrink:0}
-.checkout-modal .checkout-summary{flex-shrink:0}
-.checkout-modal form{overflow-y:auto;-webkit-overflow-scrolling:touch;flex:1;padding-bottom:20px}
+.checkout-modal{padding:0;overflow:hidden}
 .checkout-head{
   background:linear-gradient(135deg,var(--r100),var(--blush));
   padding:32px 36px;border-bottom:1px solid rgba(239,78,113,.12);
@@ -1587,13 +1584,11 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
     <b id="checkoutTotal">₱700 total</b>
   </div>
   <form id="checkoutForm" novalidate>
-    <label>First Name<input name="firstname" autocomplete="given-name" required placeholder="Juan"></label>
-    <label>Last Name<input name="lastname" autocomplete="family-name" required placeholder="Dela Cruz"></label>
-    <label class="wide">Mobile Number<input name="phone" inputmode="tel" autocomplete="tel" required placeholder="09XX XXX XXXX"></label>
-    <label class="wide">Complete Address<input name="address" autocomplete="street-address" required placeholder="House no., Street, Barangay"></label>
-    <label class="wide">Landmark<input name="landmark" placeholder="e.g. Malapit sa simbahan, may asul na gate — para sa JnT rider"></label>
-    <label>City / Town<input name="city" autocomplete="address-level2" required placeholder="Davao City"></label>
-    <label>Province<input name="province" autocomplete="address-level1" required placeholder="Davao del Sur"></label>
+    <label>Full Name<input name="name" autocomplete="name" required placeholder="Juan Dela Cruz"></label>
+    <label>Mobile Number<input name="phone" inputmode="tel" autocomplete="tel" required placeholder="09XX XXX XXXX"></label>
+    <label class="wide">Complete Delivery Address<textarea name="address" autocomplete="street-address" required placeholder="House no., street, barangay"></textarea></label>
+    <label>City<input name="city" autocomplete="address-level2" required></label>
+    <label>Province<input name="province" autocomplete="address-level1" required></label>
     <label class="wide">Payment Method
       <select name="payment" required>
         <option value="">Select payment</option>
@@ -1602,12 +1597,13 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
         <option>Bank Transfer</option>
       </select>
     </label>
+    <label class="wide">Delivery Notes<textarea name="notes" placeholder="Optional instructions or landmarks"></textarea></label>
     <label class="consent wide">
       <input type="checkbox" name="consent" required>
       <span>I agree to share my information for order processing and delivery confirmation.</span>
     </label>
     <div class="form-err wide" id="formErr"></div>
-    <button class="btn btn-primary btn-full wide" type="submit" style="margin-top:8px;padding:16px;font-size:16px">✓ Confirm My Order</button>
+    <button class="btn btn-primary btn-full wide" type="submit">Confirm My Order <span class="btn-arrow">→</span></button>
   </form>
 </div>
 
@@ -1759,21 +1755,13 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
   document.getElementById('checkoutForm').addEventListener('submit',function(e){
     e.preventDefault();
     var fd=new FormData(this);
-    var firstname=fd.get('firstname').trim(),
-        lastname=fd.get('lastname').trim(),
-        phone=fd.get('phone').trim(),
-        addr=fd.get('address').trim(),
-        city=fd.get('city').trim(),
-        prov=fd.get('province').trim(),
-        landmark=fd.get('landmark').trim(),
-        pay=fd.get('payment'),
-        consent=fd.get('consent'),
-        fullname=firstname+' '+lastname,
-        err='';
-    if(!firstname)err='Please enter your first name.';
-    else if(!lastname)err='Please enter your last name.';
+    var name=fd.get('name').trim(),phone=fd.get('phone').trim(),
+        addr=fd.get('address').trim(),city=fd.get('city').trim(),
+        prov=fd.get('province').trim(),pay=fd.get('payment'),
+        consent=fd.get('consent'),err='';
+    if(!name)err='Please enter your full name.';
     else if(!phone||!/^(09|\+639)\d{9}$/.test(phone.replace(/\s/g,'')))err='Please enter a valid PH mobile number (09XXXXXXXXX).';
-    else if(!addr)err='Please enter your complete address.';
+    else if(!addr)err='Please enter your delivery address.';
     else if(!city)err='Please enter your city.';
     else if(!prov)err='Please enter your province.';
     else if(!pay)err='Please select a payment method.';
@@ -1783,7 +1771,7 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
     var ref='DHA-'+(counter++);
     var finalPrice = currentPackPrice * cartQty;
     var finalLabel = cartQty+' × '+currentPackName;
-    document.getElementById('customerName').textContent=firstname||'Mama';
+    document.getElementById('customerName').textContent=name.split(' ')[0]||'Mama';
     document.getElementById('orderRef').textContent=ref;
     document.getElementById('confirmedQty').textContent=finalLabel;
     document.getElementById('confirmedTotal').textContent=fmt(finalPrice)+' (incl. shipping)';
