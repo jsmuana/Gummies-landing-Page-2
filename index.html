@@ -1,0 +1,1353 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ef4e71">
+  <meta name="description" content="Dr. Vita DHA with B-Vitamins strawberry gummies for kids. A parent-friendly food supplement for daily nutrition support.">
+  <title>Dr. Vita DHA Gummies | Daily Nutrition Made Kid-Friendly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root {
+  --r100:#fff0f3; --r200:#ffd6df; --r300:#ffaec0;
+  --r400:#f87693; --r500:#ef4e71; --r600:#d4254c; --r900:#5c0d20;
+  --blush:#fce8ef; --cream:#fffbf8; --peach:#fff4ed;
+  --ink:#1a0a10; --ink-mid:#4a2030; --ink-soft:#8a4f60; --ink-muted:#b8849a;
+  --green:#22c55e; --amber:#f59e0b;
+  --white:#ffffff;
+  --rad-sm:8px; --rad:16px; --rad-lg:24px; --rad-xl:40px;
+  --shadow-sm:0 4px 12px rgba(239,78,113,.12);
+  --shadow-md:0 8px 28px rgba(239,78,113,.18);
+  --shadow-lg:0 20px 60px rgba(239,78,113,.22);
+  --ease-bounce:cubic-bezier(.34,1.56,.64,1);
+  --ease-smooth:cubic-bezier(.25,.46,.45,.94);
+}
+*,::before,::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+h1,h2,h3,h4{font-family:'Manrope',sans-serif;line-height:1.12;font-weight:800}
+em{font-style:italic;color:var(--r500)}
+::selection{background:var(--r300);color:var(--r900)}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:14px 28px;border-radius:100px;
+  font-family:'Manrope',sans-serif;font-weight:700;font-size:15px;
+  letter-spacing:-.01em;transition:all .25s var(--ease-smooth);
+  position:relative;overflow:hidden;
+}
+.btn::after{
+  content:'';position:absolute;inset:0;
+  background:rgba(255,255,255,.18);
+  transform:translateX(-101%);
+  transition:transform .4s var(--ease-smooth);
+}
+.btn:hover::after{transform:none}
+.btn-arrow{display:inline-flex;transition:transform .25s var(--ease-bounce)}
+.btn:hover .btn-arrow{transform:translateX(4px)}
+.btn-primary{
+  background:linear-gradient(135deg,var(--r500),var(--r600));
+  color:#fff;
+  box-shadow:0 4px 20px rgba(239,78,113,.4),0 1px 0 rgba(255,255,255,.2) inset;
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(239,78,113,.5)}
+.btn-primary:active{transform:translateY(0)}
+.btn-ghost{
+  background:rgba(255,255,255,.08);color:var(--ink);
+  border:1.5px solid rgba(0,0,0,.12);
+}
+.btn-ghost:hover{background:var(--r100);border-color:var(--r300)}
+.btn-full{width:100%}
+.text-link{
+  display:inline-flex;align-items:center;gap:6px;
+  font-weight:600;font-size:15px;color:var(--ink-mid);
+  transition:gap .2s,color .2s;
+}
+.text-link:hover{gap:10px;color:var(--r500)}
+
+/* ============================================================
+   ANNOUNCEMENT
+   ============================================================ */
+.ann{
+  background:linear-gradient(90deg,var(--r600),var(--r500),#e84393,var(--r500),var(--r600));
+  background-size:300% 100%;
+  animation:annGrad 6s linear infinite;
+  color:#fff;text-align:center;padding:11px 20px;
+  font-size:13px;font-weight:600;letter-spacing:.02em;position:relative;z-index:100;
+}
+.ann span{opacity:.5;margin:0 10px}
+@keyframes annGrad{0%{background-position:0 0}100%{background-position:300% 0}}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav{
+  position:sticky;top:0;z-index:90;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 32px;height:68px;
+  background:rgba(255,251,248,.88);
+  backdrop-filter:blur(20px) saturate(1.4);
+  -webkit-backdrop-filter:blur(20px) saturate(1.4);
+  border-bottom:1px solid rgba(239,78,113,.08);
+  transition:box-shadow .3s;
+}
+.nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.08)}
+.brand{display:flex;align-items:center;gap:10px;font-family:'Manrope',sans-serif;font-weight:800;font-size:17px;color:var(--ink)}
+.brand-mark{
+  width:36px;height:36px;
+  background:linear-gradient(135deg,var(--r400),var(--r600));
+  border-radius:10px;display:grid;place-items:center;
+  font-size:14px;font-weight:900;color:#fff;
+  box-shadow:0 2px 8px rgba(239,78,113,.4);flex-shrink:0;
+}
+.brand small{display:block;font-size:10px;font-weight:500;color:var(--ink-soft);letter-spacing:.06em;text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links a{
+  padding:8px 14px;border-radius:100px;
+  font-size:14px;font-weight:600;color:var(--ink-mid);
+  transition:background .2s,color .2s;
+}
+.nav-links a:hover{background:var(--r100);color:var(--r600)}
+.nav-cart{
+  display:flex;align-items:center;gap:8px;
+  padding:10px 18px;border-radius:100px;
+  background:var(--ink);color:#fff;
+  font-weight:700;font-size:14px;
+  transition:background .2s,transform .15s;
+}
+.nav-cart:hover{background:var(--r600);transform:translateY(-1px)}
+.nav-cart span{
+  width:20px;height:20px;
+  background:var(--r400);color:#fff;border-radius:50%;
+  display:grid;place-items:center;font-size:11px;font-weight:800;
+}
+.nav-cart span:empty{display:none}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  min-height:calc(100svh - 108px);
+  display:grid;grid-template-columns:1fr 1fr;align-items:center;
+  gap:40px;padding:80px 48px;
+  position:relative;overflow:hidden;background:var(--cream);
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 60% at 70% 40%,rgba(239,78,113,.11) 0%,transparent 65%),
+    radial-gradient(ellipse 40% 40% at 20% 80%,rgba(248,118,147,.07) 0%,transparent 60%);
+  pointer-events:none;
+}
+.hero-blob{position:absolute;pointer-events:none;border-radius:50%;filter:blur(64px)}
+.hero-blob-1{width:500px;height:500px;background:rgba(239,78,113,.13);right:-100px;top:-140px;animation:blobP 8s ease-in-out infinite}
+.hero-blob-2{width:340px;height:340px;background:rgba(248,118,147,.09);left:-70px;bottom:-80px;animation:blobP 10s ease-in-out infinite reverse}
+@keyframes blobP{0%,100%{transform:scale(1) rotate(0deg)}50%{transform:scale(1.09) rotate(8deg)}}
+
+.hero-copy{position:relative;z-index:2;max-width:540px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--r600);margin-bottom:22px;
+}
+.eyebrow span{display:inline-block;width:24px;height:2px;background:linear-gradient(90deg,var(--r400),var(--r600));border-radius:2px}
+.hero-h1{
+  font-size:clamp(44px,5vw,70px);
+  font-weight:900;letter-spacing:-.03em;color:var(--ink);
+  line-height:1.07;margin-bottom:22px;
+}
+.hero-h1 em{
+  font-style:italic;
+  background:linear-gradient(135deg,var(--r500),var(--r600));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-copy > p{font-size:18px;color:var(--ink-soft);margin-bottom:36px;max-width:440px;line-height:1.72}
+.hero-actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:40px}
+.trust-row{
+  display:flex;align-items:center;gap:24px;flex-wrap:wrap;
+  padding-top:28px;border-top:1px solid rgba(0,0,0,.07);
+}
+.trust-row span{font-size:13px;font-weight:600;color:var(--ink-soft)}
+.trust-row span b{color:var(--ink);font-weight:800;margin-right:4px}
+
+/* Product side */
+.hero-product{
+  position:relative;z-index:2;
+  display:flex;align-items:center;justify-content:center;padding:20px;
+}
+.product-halo{
+  position:absolute;width:480px;height:480px;
+  background:radial-gradient(circle,rgba(239,78,113,.15) 0%,rgba(248,118,147,.07) 50%,transparent 70%);
+  border-radius:50%;animation:haloP 4s ease-in-out infinite;
+}
+@keyframes haloP{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.06);opacity:.85}}
+.bottle-wrap{
+  position:relative;z-index:2;
+  animation:bottleF 5s ease-in-out infinite;
+  filter:drop-shadow(0 28px 52px rgba(239,78,113,.3));
+}
+.bottle-wrap img{width:310px;max-width:100%}
+@keyframes bottleF{0%,100%{transform:translateY(0) rotate(0deg)}35%{transform:translateY(-18px) rotate(-1.5deg)}65%{transform:translateY(-10px) rotate(1deg)}}
+
+/* Gummies orbit */
+.gummies-orbit{
+  position:absolute;width:460px;height:460px;
+  animation:gummyS 18s linear infinite;
+  pointer-events:none;
+}
+.gummies-orbit img{width:100%;height:100%;object-fit:contain;opacity:.55}
+@keyframes gummyS{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+.float-badge{
+  position:absolute;z-index:3;
+  display:flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(239,78,113,.18);
+  border-radius:100px;padding:10px 18px;
+  box-shadow:0 8px 32px rgba(0,0,0,.1);
+  animation:badgeF 6s ease-in-out infinite;
+}
+.float-badge.top{top:10%;left:-2%;animation-delay:0s}
+.float-badge.bottom{bottom:14%;right:-2%;animation-delay:-3s}
+.float-badge > span{font-size:18px}
+.float-badge b{display:block;font-size:13px;font-weight:800;color:var(--ink)}
+.float-badge small{font-size:11px;color:var(--ink-soft)}
+@keyframes badgeF{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+.scroll-cue{
+  position:absolute;bottom:32px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  font-size:12px;font-weight:600;letter-spacing:.06em;
+  color:var(--ink-muted);text-transform:uppercase;opacity:.6;
+  transition:opacity .3s;
+}
+.scroll-cue:hover{opacity:1}
+.scroll-cue-track{
+  width:24px;height:36px;border:2px solid var(--ink-muted);border-radius:12px;position:relative;
+}
+.scroll-cue-track::after{
+  content:'';position:absolute;width:4px;height:8px;
+  background:var(--ink-muted);border-radius:2px;
+  top:5px;left:50%;transform:translateX(-50%);
+  animation:scrollD 1.8s ease-in-out infinite;
+}
+@keyframes scrollD{0%,100%{transform:translateX(-50%) translateY(0);opacity:1}80%{transform:translateX(-50%) translateY(12px);opacity:0}}
+
+/* ============================================================
+   MARQUEE
+   ============================================================ */
+.marquee{
+  background:linear-gradient(135deg,var(--ink),var(--r900));
+  padding:18px 0;overflow:hidden;position:relative;
+}
+.marquee::before,.marquee::after{
+  content:'';position:absolute;top:0;bottom:0;width:80px;z-index:1;pointer-events:none;
+}
+.marquee::before{left:0;background:linear-gradient(90deg,var(--ink),transparent)}
+.marquee::after{right:0;background:linear-gradient(-90deg,var(--ink),transparent)}
+.marquee-track{
+  display:flex;align-items:center;
+  animation:marqueeRoll 22s linear infinite;
+  width:max-content;
+}
+.marquee-track span{
+  font-family:'Manrope',sans-serif;font-weight:800;font-size:12px;
+  letter-spacing:.14em;color:rgba(255,255,255,.85);white-space:nowrap;padding:0 28px;
+}
+.marquee-track i{color:var(--r400);font-style:normal;font-size:10px}
+@keyframes marqueeRoll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ============================================================
+   SECTION LABEL
+   ============================================================ */
+.sec-label{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--r500);margin-bottom:16px;
+}
+.sec-label::before{
+  content:'';display:inline-block;width:20px;height:2px;
+  background:var(--r400);border-radius:2px;
+}
+
+/* ============================================================
+   STORY
+   ============================================================ */
+.story{background:var(--white);padding:96px 48px}
+.story-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;gap:64px;max-width:1100px;margin:0 auto;
+}
+.story-copy{max-width:480px}
+.story-h2{font-size:clamp(30px,3.5vw,46px);font-weight:900;letter-spacing:-.03em;margin-bottom:20px;color:var(--ink)}
+.story-copy > p{font-size:17px;color:var(--ink-soft);line-height:1.75;margin-bottom:28px}
+.mini-note{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--r100);border:1px solid var(--r200);
+  border-radius:100px;padding:10px 18px;
+  font-size:13px;font-weight:600;color:var(--r600);
+}
+
+.story-visual{position:relative}
+.pink-panel{
+  background:linear-gradient(145deg,var(--r100),var(--blush),#fff0f8);
+  border-radius:var(--rad-xl);padding:48px;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;min-height:360px;
+  border:1px solid rgba(239,78,113,.12);
+}
+.pink-panel::before{
+  content:'';position:absolute;width:200px;height:200px;
+  background:radial-gradient(circle,rgba(239,78,113,.12),transparent);
+  border-radius:50%;top:-40px;right:-40px;
+}
+.pink-panel img{width:180px;position:relative;z-index:1;filter:drop-shadow(0 16px 32px rgba(239,78,113,.28))}
+.berry-stamp{
+  position:absolute;bottom:28px;right:28px;
+  background:var(--r500);color:#fff;border-radius:var(--rad);
+  padding:14px 18px;font-family:'Manrope',sans-serif;
+  font-size:13px;font-weight:600;line-height:1.3;text-align:center;
+  box-shadow:0 4px 16px rgba(239,78,113,.4);
+  animation:wobble 3s ease-in-out infinite;
+}
+.berry-stamp b{display:block;font-size:20px;font-weight:900}
+@keyframes wobble{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
+
+.story-card{
+  position:absolute;bottom:-24px;left:-24px;
+  background:var(--ink);color:#fff;
+  border-radius:var(--rad-lg);padding:22px 24px;
+  min-width:200px;box-shadow:0 12px 40px rgba(0,0,0,.2);
+}
+.story-card > span{font-size:11px;font-weight:700;letter-spacing:.1em;opacity:.35;text-transform:uppercase}
+.story-card h3{font-size:18px;font-weight:800;margin:6px 0 6px;color:#fff}
+.story-card p{font-size:13px;opacity:.6;line-height:1.5}
+
+/* ============================================================
+   BENEFITS
+   ============================================================ */
+.benefits{background:var(--cream);padding:96px 48px}
+.benefits-head{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  gap:40px;margin-bottom:52px;max-width:1100px;margin-left:auto;margin-right:auto;
+}
+.benefits-head h2{font-size:clamp(30px,3.5vw,46px);font-weight:900;letter-spacing:-.03em;color:var(--ink)}
+.benefits-head > p{font-size:16px;color:var(--ink-soft);max-width:320px;line-height:1.7;flex-shrink:0}
+.benefit-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:16px;max-width:1100px;margin:0 auto;
+}
+.ben-card{
+  background:var(--white);border-radius:var(--rad-lg);padding:32px 24px;
+  border:1px solid rgba(0,0,0,.06);position:relative;overflow:hidden;
+  transition:transform .3s var(--ease-smooth),box-shadow .3s;
+}
+.ben-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md)}
+.ben-card span{display:block;font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--ink-muted);text-transform:uppercase;margin-bottom:12px}
+.ben-card h3{font-size:19px;font-weight:800;color:var(--ink);margin-bottom:10px}
+.ben-card p{font-size:14px;color:var(--ink-soft);line-height:1.65}
+.ben-card.featured{background:linear-gradient(145deg,var(--r500),var(--r600));border:none}
+.ben-card.featured span,.ben-card.featured h3,.ben-card.featured p{color:rgba(255,255,255,.92)}
+.ben-card.featured span{opacity:.55}
+.gummy-deco{position:absolute;right:-18px;top:-18px;width:80px;height:80px;background:rgba(255,255,255,.15);border-radius:50%}
+.ben-card.dark{background:var(--ink);border:none}
+.ben-card.dark span{color:rgba(255,255,255,.3)}
+.ben-card.dark h3{color:#fff}
+.ben-card.dark p{color:rgba(255,255,255,.5)}
+.icon-orb{
+  width:52px;height:52px;border-radius:var(--rad);
+  background:var(--r100);display:grid;place-items:center;
+  font-family:'Manrope',sans-serif;font-weight:900;font-size:13px;color:var(--r600);
+  margin-bottom:20px;
+}
+.ben-card.featured .icon-orb{background:rgba(255,255,255,.22);color:#fff}
+.ben-card.dark .icon-orb{background:rgba(255,255,255,.08);color:rgba(255,255,255,.8)}
+
+/* ============================================================
+   RITUAL
+   ============================================================ */
+.ritual{
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;gap:80px;padding:96px 80px;
+  background:linear-gradient(160deg,var(--blush) 0%,#fff8f9 50%,var(--cream) 100%);
+  position:relative;overflow:hidden;
+}
+.ritual::before{
+  content:'';position:absolute;width:600px;height:600px;
+  background:radial-gradient(circle,rgba(239,78,113,.1),transparent 70%);
+  border-radius:50%;right:-200px;top:-200px;pointer-events:none;
+}
+.ritual-product{position:relative;display:flex;align-items:center;justify-content:center;padding:60px}
+.orbit-ring{
+  position:absolute;width:340px;height:340px;
+  border:1.5px dashed rgba(239,78,113,.25);
+  border-radius:50%;animation:orbitSpin 12s linear infinite;
+}
+@keyframes orbitSpin{to{transform:rotate(360deg)}}
+.ritual-product img{width:200px;position:relative;z-index:1;filter:drop-shadow(0 20px 40px rgba(239,78,113,.32));animation:bottleF 5s ease-in-out infinite}
+.orbit-dot{
+  position:absolute;z-index:2;background:var(--white);
+  border:2px solid rgba(239,78,113,.2);border-radius:100px;
+  padding:8px 14px;font-size:12px;font-weight:800;color:var(--r600);
+  box-shadow:var(--shadow-sm);
+}
+.orbit-dot.d1{top:18%;right:12%}
+.orbit-dot.d2{bottom:22%;left:10%;font-size:18px}
+
+.ritual-copy{max-width:480px;position:relative;z-index:1}
+.ritual-copy h2{font-size:clamp(30px,3.5vw,46px);font-weight:900;letter-spacing:-.03em;margin-bottom:40px;color:var(--ink)}
+.ritual-copy ol{list-style:none;display:flex;flex-direction:column;gap:24px}
+.ritual-copy li{display:flex;align-items:flex-start;gap:20px;padding-bottom:24px;border-bottom:1px solid rgba(0,0,0,.06)}
+.ritual-copy li:last-child{border-bottom:none;padding-bottom:0}
+.ritual-copy li > span{
+  width:40px;height:40px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--r500),var(--r600));
+  border-radius:12px;display:grid;place-items:center;
+  font-family:'Manrope',sans-serif;font-size:12px;font-weight:800;color:#fff;
+  box-shadow:0 4px 12px rgba(239,78,113,.35);
+}
+.ritual-copy li b{display:block;font-size:16px;font-weight:800;color:var(--ink);margin-bottom:4px}
+.ritual-copy li p{font-size:14px;color:var(--ink-soft);line-height:1.6}
+
+/* ============================================================
+   TESTIMONIALS
+   ============================================================ */
+.testimonials{background:var(--white);padding:96px 48px}
+.testimonials-head{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  gap:40px;margin-bottom:52px;max-width:1100px;margin-left:auto;margin-right:auto;
+}
+.testimonials-head h2{font-size:clamp(30px,3.5vw,46px);font-weight:900;letter-spacing:-.03em;color:var(--ink)}
+.testimonials-head > p{font-size:15px;color:var(--ink-soft);max-width:300px;line-height:1.7}
+.testi-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:20px;max-width:1100px;margin:0 auto 40px;
+}
+.testi-card{
+  margin:0;border-radius:var(--rad-lg);overflow:hidden;
+  transition:transform .3s var(--ease-smooth),box-shadow .3s;
+  border:1px solid rgba(239,78,113,.1);
+  box-shadow:0 2px 16px rgba(0,0,0,.08);
+}
+.testi-card:hover{transform:translateY(-6px) scale(1.01);box-shadow:var(--shadow-md)}
+.testi-card img{width:100%;height:auto;display:block}
+.testi-note{
+  text-align:center;max-width:1100px;margin:0 auto;padding:20px;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+}
+.testi-note .stars{font-size:18px;letter-spacing:3px;color:var(--amber)}
+.testi-note p{font-size:12px;color:var(--ink-muted);line-height:1.6}
+
+/* ============================================================
+   SHOP
+   ============================================================ */
+.shop{
+  background:linear-gradient(160deg,var(--ink) 0%,var(--r900) 100%);
+  padding:96px 48px;position:relative;overflow:hidden;
+}
+.shop::before{
+  content:'';position:absolute;width:700px;height:700px;
+  background:radial-gradient(circle,rgba(239,78,113,.15),transparent 65%);
+  border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;
+}
+.shop-head{text-align:center;margin-bottom:56px;position:relative;z-index:1}
+.shop-head .sec-label{color:var(--r400)}
+.shop-head .sec-label::before{background:var(--r400)}
+.shop-head h2{font-size:clamp(30px,4vw,52px);font-weight:900;letter-spacing:-.03em;color:#fff;margin-bottom:12px}
+.shop-head h2 em{color:var(--r400)}
+.shop-head p{font-size:16px;color:rgba(255,255,255,.45)}
+.pack-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:20px;max-width:960px;margin:0 auto 40px;
+  position:relative;z-index:1;
+}
+.pack-card{
+  background:rgba(255,255,255,.07);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--rad-xl);padding:36px 28px;
+  transition:transform .3s var(--ease-smooth),background .3s;
+  position:relative;overflow:visible;text-align:center;
+}
+.pack-card:hover{transform:translateY(-8px);background:rgba(255,255,255,.11)}
+.pack-card.popular{background:rgba(239,78,113,.15);border-color:rgba(239,78,113,.4);margin-top:0}
+.pack-card.popular::before{
+  content:'';position:absolute;inset:0;
+  border:2px solid var(--r500);border-radius:var(--rad-xl);pointer-events:none;
+}
+.popular-tag{
+  position:absolute;top:-1px;left:50%;transform:translateX(-50%);
+  background:linear-gradient(135deg,var(--r400),var(--r600));
+  color:#fff;font-size:11px;font-weight:800;letter-spacing:.06em;
+  padding:6px 18px;border-radius:0 0 16px 16px;text-transform:uppercase;
+  box-shadow:0 4px 12px rgba(239,78,113,.4);
+}
+.pack-img{display:flex;align-items:center;justify-content:center;height:200px;margin-bottom:24px;width:100%}
+.pack-img img{width:150px;filter:drop-shadow(0 8px 24px rgba(0,0,0,.32))}
+.pack-img.single-bottle{background:#fff;border-radius:20px;padding:16px;box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.pack-img.single-bottle img{width:150px}
+.pack-img.group-img{
+  background:#fff;
+  border-radius:20px;
+  padding:12px;
+  border:none;
+  box-shadow:0 4px 20px rgba(0,0,0,.12);
+}
+.pack-img.group-img img{
+  width:100%;height:190px;
+  object-fit:contain;
+  border-radius:12px;
+  filter:drop-shadow(0 16px 32px rgba(239,78,113,.28)) drop-shadow(0 4px 12px rgba(0,0,0,.18));
+  animation:bottleF 5s ease-in-out infinite;
+}
+.pack-img.single-bottle img{
+  filter:drop-shadow(0 16px 32px rgba(239,78,113,.28)) drop-shadow(0 4px 12px rgba(0,0,0,.18));
+  animation:bottleF 5s ease-in-out infinite;
+}
+.pack-orig{display:block;font-size:14px;color:rgba(255,255,255,.55);text-decoration:line-through;margin-bottom:6px;font-weight:600}
+.pack-save{display:inline-block;background:#ef8093;border:none;color:#fff;font-size:12px;font-weight:900;letter-spacing:.04em;padding:5px 14px;border-radius:100px;margin-bottom:8px;text-transform:uppercase;box-shadow:0 3px 10px rgba(239,128,147,.45)}
+.pack-b1t1{display:inline-block;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;font-size:11px;font-weight:800;letter-spacing:.06em;padding:4px 12px;border-radius:100px;margin-bottom:6px;text-transform:uppercase}
+.pack-cod{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:rgba(255,255,255,.75);margin-top:8px}
+.pack-cod::before{content:"✓";color:#22c55e;font-weight:900}
+.bottles-two img:last-child{margin-left:-18px;transform:rotate(4deg)}
+.bottles-three img:nth-child(2){transform:scale(1.08);z-index:1;position:relative}
+.bottles-three img:last-child{margin-left:-18px;transform:rotate(4deg)}
+.bottles-three img:first-child{transform:rotate(-4deg);margin-right:-18px}
+.pack-kicker{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:8px}
+.pack-card h3{font-size:28px;font-weight:900;color:#fff;margin-bottom:4px}
+.pack-card > p{font-size:14px;color:rgba(255,255,255,.75);margin-bottom:24px}
+.pack-price{margin-bottom:24px}
+.pack-price b{font-family:'Manrope',sans-serif;font-size:40px;font-weight:900;color:#fff;letter-spacing:-.02em;display:block;margin:4px 0}
+.pack-price span{display:block;font-size:12px;color:rgba(255,255,255,.65);margin-top:2px}
+.pack-btn{
+  width:100%;padding:14px;border-radius:100px;
+  background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.15);
+  color:#fff;font-family:'Manrope',sans-serif;font-weight:700;font-size:14px;
+  transition:all .25s;cursor:pointer;
+}
+.pack-btn:hover{background:var(--r500);border-color:var(--r500);transform:translateY(-2px)}
+.pack-card.popular .pack-btn{background:var(--r500);border-color:var(--r500)}
+.shop-trust{
+  display:flex;justify-content:center;gap:32px;
+  position:relative;z-index:1;flex-wrap:wrap;
+}
+.shop-trust span{
+  font-size:13px;font-weight:600;color:rgba(255,255,255,.4);
+  display:flex;align-items:center;gap:8px;
+}
+.shop-trust span::before{content:'✓';color:var(--green);font-weight:800}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.faq{
+  display:grid;grid-template-columns:1fr 1.6fr;
+  align-items:start;gap:80px;padding:96px 80px;background:var(--cream);
+}
+.faq-intro h2{font-size:clamp(30px,3.5vw,48px);font-weight:900;letter-spacing:-.03em;color:var(--ink);margin-bottom:16px}
+.faq-intro > p{font-size:16px;color:var(--ink-soft);line-height:1.7;margin-bottom:28px}
+.accordion{display:flex;flex-direction:column}
+details{border-bottom:1px solid rgba(0,0,0,.07);padding:20px 0}
+details:first-child{padding-top:0}
+summary{
+  list-style:none;cursor:pointer;
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:'Manrope',sans-serif;font-size:16px;font-weight:700;color:var(--ink);
+  user-select:none;transition:color .2s;
+}
+summary::-webkit-details-marker{display:none}
+summary:hover{color:var(--r500)}
+summary span{
+  width:28px;height:28px;display:grid;place-items:center;
+  border-radius:50%;background:var(--r100);color:var(--r500);
+  font-size:16px;font-weight:400;flex-shrink:0;
+  transition:transform .3s var(--ease-smooth),background .2s;
+}
+details[open] summary span{transform:rotate(45deg);background:var(--r500);color:#fff}
+details > p{font-size:15px;color:var(--ink-soft);line-height:1.7;padding-top:14px;animation:fadeSl .3s var(--ease-smooth)}
+@keyframes fadeSl{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{background:var(--ink);padding:56px 48px 40px;border-top:1px solid rgba(255,255,255,.05)}
+.footer-brand{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.footer-brand .brand-mark{width:42px;height:42px;font-size:16px}
+.footer-brand b{display:block;font-size:18px;font-weight:800;color:#fff}
+.footer-brand small{font-size:12px;color:rgba(255,255,255,.3);display:block;margin-top:2px}
+footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:560px;margin-bottom:32px}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:20px;border-top:1px solid rgba(255,255,255,.06)}
+.footer-bottom span{font-size:12px;color:rgba(255,255,255,.22)}
+
+/* ============================================================
+   MOBILE STICKY
+   ============================================================ */
+.mobile-sticky{
+  display:none;position:fixed;bottom:0;left:0;right:0;z-index:80;
+  background:linear-gradient(135deg,var(--r500),var(--r600));color:#fff;
+  padding:16px 24px;justify-content:space-between;align-items:center;
+  box-shadow:0 -4px 24px rgba(239,78,113,.4);
+  border-top:1px solid rgba(255,255,255,.15);font-family:'Manrope',sans-serif;
+}
+.mobile-sticky span{font-size:15px;font-weight:700}
+.mobile-sticky b{font-size:18px;font-weight:900}
+
+/* ============================================================
+   OVERLAY + DRAWER
+   ============================================================ */
+.overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(26,10,16,.6);backdrop-filter:blur(6px);opacity:0;transition:opacity .3s}
+.overlay.on{display:block;opacity:1}
+.cart-drawer{
+  position:fixed;right:0;top:0;bottom:0;z-index:210;width:420px;max-width:92vw;
+  background:var(--white);padding:32px;transform:translateX(102%);
+  transition:transform .4s var(--ease-smooth);overflow-y:auto;
+  display:flex;flex-direction:column;gap:24px;
+}
+.cart-drawer.open{transform:none}
+.drawer-head{display:flex;justify-content:space-between;align-items:flex-start}
+.drawer-head span{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--r500);margin-bottom:6px;display:block}
+.drawer-head h2{font-size:20px;font-weight:800;color:var(--ink)}
+.close-btn{
+  width:36px;height:36px;border-radius:50%;display:grid;place-items:center;
+  font-size:20px;color:var(--ink-soft);background:rgba(0,0,0,.06);
+  transition:background .2s,color .2s;flex-shrink:0;cursor:pointer;
+}
+.close-btn:hover{background:var(--r100);color:var(--r600)}
+.cart-prod{
+  display:flex;align-items:center;gap:16px;padding:16px;
+  border-radius:var(--rad);background:var(--cream);border:1px solid rgba(0,0,0,.06);
+}
+.cart-prod img{width:64px;flex-shrink:0}
+.cart-prod b{display:block;font-size:15px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.cart-prod small{font-size:13px;color:var(--ink-soft)}
+.cart-prod span{display:block;font-size:14px;font-weight:700;color:var(--r500);margin-top:4px}
+.qty-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:16px 0;border-top:1px solid rgba(0,0,0,.06);border-bottom:1px solid rgba(0,0,0,.06);
+}
+.qty-row > span{font-size:14px;font-weight:600;color:var(--ink-soft)}
+.stepper{display:flex;align-items:center;gap:16px}
+.stepper button{
+  width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(0,0,0,.12);
+  font-size:18px;color:var(--ink);display:grid;place-items:center;transition:all .2s;cursor:pointer;background:none;
+}
+.stepper button:hover{background:var(--r100);border-color:var(--r300);color:var(--r600)}
+.stepper b{font-size:18px;font-weight:800;min-width:24px;text-align:center}
+.totals{display:flex;flex-direction:column;gap:10px}
+.totals > div{display:flex;justify-content:space-between;align-items:center}
+.totals > div span{font-size:14px;color:var(--ink-soft)}
+.totals > div b{font-size:14px;font-weight:700;color:var(--ink)}
+.grand-total{padding:16px;margin-top:6px;background:var(--r100);border-radius:var(--rad)}
+.grand-total span{font-size:15px;font-weight:700;color:var(--ink)}
+.grand-total b{font-size:22px;font-weight:900;color:var(--r600)}
+.remove-link{background:none;border:none;font-size:13px;color:var(--ink-muted);text-decoration:underline;transition:color .2s;margin-top:-8px;text-align:center;cursor:pointer}
+.remove-link:hover{color:var(--r600)}
+
+/* ============================================================
+   MODALS
+   ============================================================ */
+.modal{
+  display:none;position:fixed;z-index:220;
+  top:50%;left:50%;transform:translate(-50%,-48%) scale(.96);
+  width:480px;max-width:calc(100vw - 32px);
+  background:var(--white);border-radius:var(--rad-xl);
+  padding:40px 36px;
+  box-shadow:0 32px 80px rgba(0,0,0,.22);
+  opacity:0;transition:transform .35s var(--ease-bounce),opacity .3s;
+  max-height:90svh;overflow-y:auto;
+}
+.modal.open{display:block;transform:translate(-50%,-50%) scale(1);opacity:1}
+.modal .close-btn{position:absolute;top:20px;right:20px}
+.modal .sec-label{color:var(--r500)}
+.modal h2{font-size:26px;font-weight:900;letter-spacing:-.02em;color:var(--ink);margin-bottom:12px}
+.modal > p{font-size:15px;color:var(--ink-soft);line-height:1.7;margin-bottom:28px}
+.modal .btn{margin-bottom:10px}
+
+.upsell-art{display:flex;align-items:center;justify-content:center;position:relative;margin-bottom:24px}
+.upsell-art img{width:120px;filter:drop-shadow(0 8px 24px rgba(239,78,113,.32))}
+.upsell-art span{
+  position:absolute;right:80px;bottom:0;width:42px;height:42px;
+  background:linear-gradient(135deg,var(--r400),var(--r600));
+  border-radius:50%;border:3px solid #fff;display:grid;place-items:center;
+  font-family:'Manrope',sans-serif;font-size:15px;font-weight:900;color:#fff;
+  box-shadow:0 4px 12px rgba(239,78,113,.4);
+}
+
+.checkout-modal{padding:0;overflow:hidden}
+.checkout-head{
+  background:linear-gradient(135deg,var(--r100),var(--blush));
+  padding:32px 36px;border-bottom:1px solid rgba(239,78,113,.12);
+}
+.checkout-head h2{font-size:24px;font-weight:900;color:var(--ink);margin-bottom:6px}
+.checkout-head > p{font-size:14px;color:var(--ink-soft)}
+.checkout-summary{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:16px 36px;background:rgba(239,78,113,.05);border-bottom:1px solid rgba(0,0,0,.06);
+}
+.checkout-summary span{font-size:14px;color:var(--ink-soft)}
+.checkout-summary b{font-size:16px;font-weight:800;color:var(--r600)}
+
+#checkoutForm{padding:28px 36px 36px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+#checkoutForm label{
+  display:flex;flex-direction:column;gap:6px;
+  font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);
+}
+#checkoutForm label.wide{grid-column:1/-1}
+#checkoutForm input,#checkoutForm textarea,#checkoutForm select{
+  padding:12px 14px;border:1.5px solid rgba(0,0,0,.1);border-radius:var(--rad-sm);
+  font-family:'DM Sans',sans-serif;font-size:15px;color:var(--ink);background:var(--cream);
+  transition:border-color .2s,box-shadow .2s;outline:none;
+}
+#checkoutForm input:focus,#checkoutForm textarea:focus,#checkoutForm select:focus{border-color:var(--r400);box-shadow:0 0 0 3px rgba(239,78,113,.12)}
+#checkoutForm textarea{resize:vertical;min-height:80px}
+#checkoutForm .consent{flex-direction:row;gap:10px;align-items:flex-start;font-size:12px;text-transform:none;letter-spacing:0;color:var(--ink-soft)}
+#checkoutForm .consent input{width:16px;height:16px;margin-top:2px;flex-shrink:0;accent-color:var(--r500)}
+.form-err{color:var(--r600);font-size:13px;font-weight:600}
+
+.confirm-modal{text-align:center}
+.success-mark{
+  width:72px;height:72px;border-radius:50%;margin:0 auto 20px;
+  background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;
+  font-size:32px;font-weight:800;display:grid;place-items:center;
+  box-shadow:0 8px 24px rgba(34,197,94,.38);
+  animation:successP .5s var(--ease-bounce);
+}
+@keyframes successP{0%{transform:scale(0);opacity:0}100%{transform:scale(1);opacity:1}}
+.confirm-modal h2{font-size:26px;font-weight:900;color:var(--ink);margin-bottom:10px}
+.confirm-modal > p{font-size:15px;color:var(--ink-soft);line-height:1.7;margin-bottom:28px}
+.confirm-card{
+  background:var(--r100);border-radius:var(--rad);padding:20px;margin-bottom:28px;
+  display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:left;
+}
+.confirm-card > div{display:flex;flex-direction:column;gap:4px}
+.confirm-card span{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+.confirm-card b{font-size:15px;font-weight:800;color:var(--ink)}
+
+/* ============================================================
+   REVEAL
+   ============================================================ */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s var(--ease-smooth),transform .7s var(--ease-smooth)}
+.reveal.on{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr;padding:60px 32px;text-align:center;min-height:auto}
+  .hero-copy{max-width:100%}
+  .hero-product{order:-1;padding:40px}
+  .hero-actions,.trust-row{justify-content:center}
+  .benefit-grid{grid-template-columns:1fr 1fr}
+  .ritual{grid-template-columns:1fr;padding:64px 40px;gap:48px}
+  .ritual-product{display:none}
+  .faq{grid-template-columns:1fr;padding:64px 40px;gap:40px}
+  .story-grid{grid-template-columns:1fr;gap:40px}
+  .benefits-head,.testimonials-head{flex-direction:column;gap:16px}
+  .pack-grid{grid-template-columns:1fr 1fr 1fr}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .nav{padding:0 20px}
+  .hero{padding:48px 20px}
+  .hero-h1{font-size:38px}
+  .bottle-wrap img{width:220px}
+  .float-badge{display:none}
+  .gummies-orbit{display:none}
+  .benefit-grid,.testimonial-grid{grid-template-columns:1fr}
+  .pack-grid{grid-template-columns:1fr;gap:16px;max-width:380px;margin-left:auto;margin-right:auto}
+  .shop,.story,.benefits,.ritual,.faq,.testimonials{padding:64px 20px}
+  .shop-trust{flex-direction:column;align-items:center;gap:12px}
+  footer{padding:40px 20px}
+  .mobile-sticky{display:flex}
+  body{padding-bottom:72px}
+  #checkoutForm{grid-template-columns:1fr;padding:24px}
+  .checkout-head,.checkout-summary{padding-left:24px;padding-right:24px}
+  .modal{padding:32px 24px}
+  .pack-card h3{font-size:24px}
+  .pack-price b{font-size:32px}
+  .pack-img{height:180px}
+  .pack-img.group-img img{height:160px}
+  .faq{padding:64px 20px}
+  .story-grid{gap:32px}
+  .story-card{position:static;margin-top:16px;left:0;bottom:0}
+  .pink-panel{min-height:280px}
+}
+@media(min-width:769px) and (max-width:1024px){
+  .pack-grid{grid-template-columns:1fr 1fr 1fr;gap:12px;max-width:100%}
+  .pack-card{padding:24px 16px}
+  .pack-card h3{font-size:22px}
+  .pack-price b{font-size:30px}
+  .pack-img{height:160px}
+  .pack-img.group-img img{height:140px}
+  .shop{padding:72px 32px}
+  .benefit-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="ann">
+  Support your child's daily nutrition with Dr. Vita <span>•</span> Cash on Delivery available
+</div>
+
+<header class="nav" id="mainNav">
+  <a class="brand" href="#home" aria-label="Dr. Vita home">
+    <span class="brand-mark">V+</span>
+    <span>Dr. Vita <small>premium</small></span>
+  </a>
+  <nav class="nav-links" aria-label="Main navigation">
+    <a href="#benefits">Why Dr. Vita</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#shop">Shop</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <button class="nav-cart" id="cartButton" type="button" aria-label="Open order">
+    Bag <span id="cartCount">0</span>
+  </button>
+</header>
+
+<main>
+
+<!-- ======== HERO ======== -->
+<section class="hero" id="home">
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-copy reveal">
+    <div class="eyebrow"><span></span>Daily nutrition, made delightful</div>
+    <h1 class="hero-h1">A little gummy.<br><em>A lot of care.</em></h1>
+    <p>Strawberry-flavored DHA with B-Vitamins in a kid-friendly food supplement made for simpler, happier daily routines.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#shop">Choose Your Pack <span class="btn-arrow">→</span></a>
+      <a class="text-link" href="#story">Discover Dr. Vita <span>↘</span></a>
+    </div>
+    <div class="trust-row">
+      <span><b>30</b>gummies</span>
+      <span><b>DHA + B</b>vitamins</span>
+      <span><b>🍓</b>strawberry</span>
+    </div>
+  </div>
+  <div class="hero-product reveal d2">
+    <div class="product-halo"></div>
+    <div class="gummies-orbit"><img src="assets/img_01.png" alt=""></div>
+    <div class="bottle-wrap">
+      <img src="assets/img_02.png" alt="Dr. Vita DHA with B-Vitamins strawberry gummies bottle">
+    </div>
+    <div class="float-badge top"><span>✦</span><div><b>Kid-friendly</b><small>Gummy format</small></div></div>
+    <div class="float-badge bottom"><span>♥</span><div><b>Parent-approved</b><small>Simple routine</small></div></div>
+  </div>
+  <a class="scroll-cue" href="#story"><div class="scroll-cue-track"></div>Scroll to explore</a>
+</section>
+
+<!-- ======== MARQUEE ======== -->
+<section class="marquee" aria-label="Product highlights">
+  <div class="marquee-track">
+    <span>DHA WITH B-VITAMINS</span><i>✦</i><span>STRAWBERRY FLAVOR</span><i>✦</i>
+    <span>30 GUMMIES PER BOTTLE</span><i>✦</i><span>FOOD SUPPLEMENT</span><i>✦</i>
+    <span>PARENT-FRIENDLY</span><i>✦</i><span>DAILY NUTRITION SUPPORT</span><i>✦</i>
+    <span>DHA WITH B-VITAMINS</span><i>✦</i><span>STRAWBERRY FLAVOR</span><i>✦</i>
+    <span>30 GUMMIES PER BOTTLE</span><i>✦</i><span>FOOD SUPPLEMENT</span><i>✦</i>
+    <span>PARENT-FRIENDLY</span><i>✦</i><span>DAILY NUTRITION SUPPORT</span><i>✦</i>
+  </div>
+</section>
+
+<!-- ======== STORY ======== -->
+<section class="story" id="story">
+  <div class="story-grid">
+    <div class="story-copy reveal">
+      <div class="sec-label">For the little routines that matter</div>
+      <h2 class="story-h2">Kapag ayaw sa usual vitamins, make the routine feel <em>lighter.</em></h2>
+      <p>Gets namin ang picky-eater days. Dr. Vita gives parents a more enjoyable food supplement option—without turning everyday care into a struggle.</p>
+      <div class="mini-note"><span>♥</span> Care, not pressure. Support, not promises.</div>
+    </div>
+    <div class="story-visual reveal d2">
+      <div class="pink-panel">
+        <img src="assets/img_02.png" alt="Dr. Vita bottle" loading="lazy">
+        <div class="berry-stamp">berry<br><b>good</b></div>
+      </div>
+      <div class="story-card">
+        <span>01</span>
+        <h3>Easy to love</h3>
+        <p>Sweet strawberry flavor in a familiar gummy format.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== BENEFITS ======== -->
+<section class="benefits" id="benefits">
+  <div class="benefits-head reveal">
+    <div>
+      <div class="sec-label">What's inside the routine</div>
+      <h2>Simple support.<br><em>Thoughtfully made.</em></h2>
+    </div>
+    <p>A parent-friendly way to add DHA and B-Vitamins to your child's daily wellness routine.</p>
+  </div>
+  <div class="benefit-grid">
+    <article class="ben-card reveal">
+      <div class="icon-orb">DHA</div>
+      <span>01</span><h3>DHA + B-Vitamins</h3>
+      <p>Daily nutrition support in one simple gummy format.</p>
+    </article>
+    <article class="ben-card featured reveal d1">
+      <div class="gummy-deco"></div>
+      <div class="icon-orb">🍓</div>
+      <span>02</span><h3>Strawberry happy</h3>
+      <p>A kid-friendly taste that may make supplement time more enjoyable.</p>
+    </article>
+    <article class="ben-card reveal d2">
+      <div class="icon-orb">30</div>
+      <span>03</span><h3>Routine-ready</h3>
+      <p>30 individually wrapped gummies in every bottle.</p>
+    </article>
+    <article class="ben-card dark reveal d3">
+      <div class="icon-orb">♥</div>
+      <span>04</span><h3>Made for parents, too</h3>
+      <p>Clear pricing, easy ordering, and no exaggerated health claims.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ======== RITUAL ======== -->
+<section class="ritual">
+  <div class="ritual-product reveal">
+    <div class="orbit-ring"></div>
+    <img src="assets/img_02.png" alt="Dr. Vita DHA gummies bottle" loading="lazy">
+    <span class="orbit-dot d1">AM</span>
+    <span class="orbit-dot d2">♥</span>
+  </div>
+  <div class="ritual-copy reveal d1">
+    <div class="sec-label">A tiny daily ritual</div>
+    <h2>Wellness can feel like a <em>treat.</em></h2>
+    <ol>
+      <li><span>01</span><div><b>Choose a consistent time</b><p>Add it to a familiar part of your child's routine.</p></div></li>
+      <li><span>02</span><div><b>Keep it simple</b><p>Follow the product label and parental guidance.</p></div></li>
+      <li><span>03</span><div><b>Celebrate consistency</b><p>Small routines can become happy family habits.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ======== TESTIMONIALS ======== -->
+<section class="testimonials" id="testimonials">
+  <div class="testimonials-head reveal">
+    <div>
+      <div class="sec-label">Real stories from real parents</div>
+      <h2>Happy routines.<br><em>Shared with love.</em></h2>
+    </div>
+    <p>A few experiences shared by Dr. Vita customers.</p>
+  </div>
+  <div class="testi-grid" aria-label="Customer testimonials">
+    <figure class="testi-card reveal">
+      <img src="assets/img_03.png" alt="Testimonial from Efrecina De Pedro" loading="lazy">
+    </figure>
+    <figure class="testi-card reveal d1">
+      <img src="assets/img_04.png" alt="Testimonial from Janella A." loading="lazy">
+    </figure>
+    <figure class="testi-card reveal d2">
+      <img src="assets/img_05.png" alt="Testimonial from Christine R." loading="lazy">
+    </figure>
+  </div>
+  <div class="testi-note reveal">
+    <span class="stars">★★★★★</span>
+    <p>Individual experiences may vary. Testimonials reflect personal customer feedback.</p>
+  </div>
+</section>
+
+<!-- ======== SHOP ======== -->
+<section class="shop" id="shop">
+  <div class="shop-head reveal">
+    <div class="sec-label">Choose your Dr. Vita pack</div>
+    <h2>More care, ready when<br><em>you need it.</em></h2>
+    <p>Lahat ng presyo ay kasama na ang shipping fee</p>
+  </div>
+  <div class="pack-grid">
+
+    <!-- 1 BOTTLE -->
+    <article class="pack-card reveal" data-qty="1" data-price="700">
+      <div class="pack-img single-bottle">
+        <img src="assets/img_02.png" alt="1 bottle Dr. Vita DHA" loading="lazy">
+      </div>
+      <div class="pack-kicker">Try the routine</div>
+      <h3>1 Bottle</h3>
+      <p>30 gummies</p>
+      <div class="pack-price">
+        <span class="pack-orig">₱850</span>
+        <span class="pack-save">Save ₱150</span>
+        <b>₱700</b>
+        
+      </div>
+      <button class="pack-btn" type="button">Add to Order <span>→</span></button>
+    </article>
+
+    <!-- 2 BOTTLES (BUY 1 TAKE 1) -->
+    <article class="pack-card popular reveal d1" data-qty="2" data-price="750">
+      <div class="popular-tag">Most loved</div>
+      <div class="pack-img group-img">
+        <img src="assets/img_06.png" alt="2 bottles Dr. Vita DHA" loading="lazy">
+      </div>
+      <div class="pack-kicker">Stay stocked</div>
+      <span class="pack-b1t1">★ BUY 1 TAKE 1</span>
+      <h3>2 Bottles</h3>
+      <p>60 gummies</p>
+      <div class="pack-price">
+        <span class="pack-orig">₱1,400</span>
+        <span class="pack-save">Save ₱650</span>
+        <b>₱750</b>
+        
+      </div>
+      <button class="pack-btn" type="button">Add to Order <span>→</span></button>
+    </article>
+
+    <!-- 3 BOTTLES -->
+    <article class="pack-card reveal d2" data-qty="3" data-price="1300">
+      <div class="pack-img group-img">
+        <img src="assets/img_07.png" alt="3 bottles Dr. Vita DHA" loading="lazy">
+      </div>
+      <div class="pack-kicker">Longer supply</div>
+      <h3>3 Bottles</h3>
+      <p>90 gummies</p>
+      <div class="pack-price">
+        <span class="pack-orig">₱2,100</span>
+        <span class="pack-save">Save ₱800</span>
+        <b>₱1,300</b>
+        
+      </div>
+      <div class="pack-cod">Cash on Delivery available</div>
+      <button class="pack-btn" style="margin-top:12px" type="button">Add to Order <span>→</span></button>
+    </article>
+
+  </div>
+  <div class="shop-trust reveal">
+    <span>Cash on Delivery</span><span>Secure order form</span>
+  </div>
+</section>
+
+<!-- ======== FAQ ======== -->
+<section class="faq" id="faq">
+  <div class="faq-intro reveal">
+    <div class="sec-label">Parent questions, answered</div>
+    <h2>Good to <em>know.</em></h2>
+    <p>Still curious? Send us a message and our team will be happy to help.</p>
+    <a class="text-link" href="#">Message us on Facebook <span>→</span></a>
+  </div>
+  <div class="accordion reveal d1">
+    <details open><summary>What is Dr. Vita DHA Gummies?<span>+</span></summary><p>A strawberry-flavored food supplement gummy with DHA and B-Vitamins for kids.</p></details>
+    <details><summary>Is this medicine?<span>+</span></summary><p>No. Dr. Vita is a food supplement and is not a medicine. It is not intended to diagnose, treat, cure, or prevent any disease.</p></details>
+    <details><summary>How many gummies are in one bottle?<span>+</span></summary><p>Each bottle contains 30 individually wrapped gummies.</p></details>
+    <details><summary>Is this okay for picky eaters?<span>+</span></summary><p>It may be a more enjoyable option for kids who do not like regular vitamins, but a balanced diet remains important.</p></details>
+    <details><summary>Should I consult a doctor?<span>+</span></summary><p>Yes, especially if your child has allergies, a medical condition, or takes other supplements or medicines.</p></details>
+    <details><summary>What happens after I order?<span>+</span></summary><p>Our team will contact you to confirm your details and delivery. Expect a message within 24-48 hours.</p></details>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-brand">
+    <span class="brand-mark">V+</span>
+    <div><b>Dr. Vita</b><small>Daily care, made delightful.</small></div>
+  </div>
+  <p>This product is a food supplement and is not intended to diagnose, treat, cure, or prevent any disease. Please consult a healthcare professional if you have questions about your child's health.</p>
+  <div class="footer-bottom"><span>© 2026 Dr. Vita</span><span>Privacy · Terms</span></div>
+</footer>
+
+<button class="mobile-sticky" id="mobileOrder" type="button"><span>Order Dr. Vita</span><b>₱550 →</b></button>
+
+<div class="overlay" id="overlay"></div>
+
+<!-- Cart Drawer -->
+<aside class="cart-drawer" id="cartDrawer" aria-labelledby="cartTitle" aria-hidden="true">
+  <div class="drawer-head">
+    <div><span>Your order</span><h2 id="cartTitle">A happy little routine</h2></div>
+    <button class="close-btn" id="closeCart" type="button" aria-label="Close">×</button>
+  </div>
+  <div class="cart-prod">
+    <img src="assets/img_02.png" alt="">
+    <div><b>Dr. Vita DHA Gummies</b><small>30 gummies · Strawberry</small><span id="cartPrice" style="font-size:15px;font-weight:800;color:var(--r500)">₱700 · shipping incl.</span></div>
+  </div>
+  <div class="qty-row">
+    <span>Quantity</span>
+    <div class="stepper">
+      <button id="minusQty" type="button" aria-label="Decrease">−</button>
+      <b id="quantity">1</b>
+      <button id="plusQty" type="button" aria-label="Increase">+</button>
+    </div>
+  </div>
+  <div id="promoNotice" style="display:none;background:linear-gradient(135deg,#ef8093,var(--r600));color:#fff;border-radius:12px;padding:10px 14px;font-size:13px;font-weight:700;text-align:center">
+    🎁 Buy 1 Take 1 Applied! You save ₱650
+  </div>
+  <div class="totals">
+    <div><span>Package Price</span><b id="subtotal">₱700</b></div>
+    <div><span>Shipping</span><b style="color:var(--green)">FREE (included)</b></div>
+    <div class="grand-total"><span>Total</span><b id="total">₱700</b></div>
+  </div>
+  <button class="btn btn-primary btn-full" id="continueBtn" type="button">Continue <span class="btn-arrow">→</span></button>
+  <button class="remove-link" id="removeItem" type="button">Remove item</button>
+</aside>
+
+<!-- Upsell Modal -->
+<div class="modal" id="upsellModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="upsellTitle">
+  <button class="close-btn modal-close" data-modal="upsellModal" type="button" aria-label="Close">×</button>
+  <div class="upsell-art">
+    <img src="assets/img_02.png" alt="">
+    <span>+1</span>
+  </div>
+  <div class="sec-label">One last thoughtful thing</div>
+  <h2 id="upsellTitle">Want an extra bottle ready at home?</h2>
+  <p>Add one more so you won't need to reorder too soon. Helpful, never pushy.</p>
+  <button class="btn btn-primary btn-full" id="acceptUpsell" type="button">Yes, Add 1 More · ₱550</button>
+  <button class="btn btn-ghost btn-full" id="skipUpsell" type="button">No thanks, continue</button>
+</div>
+
+<!-- Checkout Modal -->
+<div class="modal checkout-modal" id="checkoutModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+  <button class="close-btn modal-close" data-modal="checkoutModal" type="button" aria-label="Close">×</button>
+  <div class="checkout-head">
+    <div class="sec-label">Secure checkout</div>
+    <h2 id="checkoutTitle">Complete your order</h2>
+    <p>We'll contact you to confirm delivery.</p>
+  </div>
+  <div class="checkout-summary">
+    <span id="checkoutQty">1 bottle</span>
+    <b id="checkoutTotal">₱700 total</b>
+  </div>
+  <form id="checkoutForm" novalidate>
+    <label>Full Name<input name="name" autocomplete="name" required placeholder="Juan Dela Cruz"></label>
+    <label>Mobile Number<input name="phone" inputmode="tel" autocomplete="tel" required placeholder="09XX XXX XXXX"></label>
+    <label class="wide">Complete Delivery Address<textarea name="address" autocomplete="street-address" required placeholder="House no., street, barangay"></textarea></label>
+    <label>City<input name="city" autocomplete="address-level2" required></label>
+    <label>Province<input name="province" autocomplete="address-level1" required></label>
+    <label class="wide">Payment Method
+      <select name="payment" required>
+        <option value="">Select payment</option>
+        <option>Cash on Delivery</option>
+        <option>GCash</option>
+        <option>Bank Transfer</option>
+      </select>
+    </label>
+    <label class="wide">Delivery Notes<textarea name="notes" placeholder="Optional instructions or landmarks"></textarea></label>
+    <label class="consent wide">
+      <input type="checkbox" name="consent" required>
+      <span>I agree to share my information for order processing and delivery confirmation.</span>
+    </label>
+    <div class="form-err wide" id="formErr"></div>
+    <button class="btn btn-primary btn-full wide" type="submit">Confirm My Order <span class="btn-arrow">→</span></button>
+  </form>
+</div>
+
+<!-- Confirmation Modal -->
+<div class="modal confirm-modal" id="confirmModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+  <div class="success-mark">✓</div>
+  <div class="sec-label">Order received</div>
+  <h2 id="confirmTitle">Thank you, <span id="customerName">Mama</span>!</h2>
+  <p>Our team will contact you shortly to confirm your order and delivery details.</p>
+  <div class="confirm-card">
+    <div><span>Reference</span><b id="orderRef">DHA-0001</b></div>
+    <div><span>Order</span><b id="confirmedQty">1 bottle</b></div>
+    <div><span>Total</span><b id="confirmedTotal">₱700</b></div>
+    <div><span>Payment</span><b id="confirmedPay">COD</b></div>
+  </div>
+  <button class="btn btn-primary btn-full" id="backHome" type="button">Back to Home <span class="btn-arrow">→</span></button>
+</div>
+
+<script>
+(function(){
+  var counter=1000+Math.floor(Math.random()*9000), currentPack=null, cartQty=1;
+  function fmt(n){return'\u20b1'+n.toLocaleString();}
+  function sub(q){return q*550;}
+  function tot(q){return sub(q)+150;}
+
+  function openOverlay(){document.getElementById('overlay').classList.add('on');}
+  function closeOverlay(){
+    if(!document.querySelector('.modal.open')&&!document.getElementById('cartDrawer').classList.contains('open'))
+      {document.getElementById('overlay').classList.remove('on');document.body.style.overflow='';}
+  }
+  function openDrawer(){
+    document.getElementById('cartDrawer').classList.add('open');
+    document.getElementById('cartDrawer').setAttribute('aria-hidden','false');
+    openOverlay();document.body.style.overflow='hidden';
+  }
+  function closeDrawer(){
+    document.getElementById('cartDrawer').classList.remove('open');
+    document.getElementById('cartDrawer').setAttribute('aria-hidden','true');
+    closeOverlay();
+  }
+  function openModal(id){
+    var m=document.getElementById(id);
+    m.style.display='block';
+    requestAnimationFrame(function(){m.classList.add('open');m.setAttribute('aria-hidden','false');});
+    openOverlay();document.body.style.overflow='hidden';
+  }
+  function closeModal(id){
+    var m=document.getElementById(id);
+    m.classList.remove('open');m.setAttribute('aria-hidden','true');
+    setTimeout(function(){m.style.display='none';},350);
+    closeOverlay();
+  }
+  function syncUI(){
+    if(!currentPack){ return; } // no pack selected yet
+    var info = getPackInfo(cartQty);
+    var p    = info.price;
+    // Stepper
+    document.getElementById('quantity').textContent = cartQty;
+    // Promo banner — only show on B1T1 pack
+    document.getElementById('promoNotice').style.display = currentPromo ? 'block' : 'none';
+    // Cart product price line — show unit pack price
+    document.getElementById('cartPrice').textContent = fmt(currentPackPrice)+' / pack · shipping incl.';
+    // Totals
+    document.getElementById('subtotal').textContent = fmt(p);
+    document.getElementById('total').textContent    = fmt(p);
+    // Nav badge
+    document.getElementById('cartCount').textContent = cartQty > 0 ? cartQty : '';
+    // Checkout
+    document.getElementById('checkoutQty').textContent   = cartQty + ' × ' + currentPackName;
+    document.getElementById('checkoutTotal').textContent = fmt(p) + ' (shipping incl.)';
+  }
+
+  // Pack buttons
+  var cartQty = 1;
+  var currentPack = null;
+  // Price per qty: 1=₱700, 2=₱750(B1T1), 3+=₱1300
+  // Simple: packPrice × qty. No limit on qty.
+  // currentPackPrice is set when customer clicks a pack card.
+  var currentPackPrice = 0;
+  var currentPackName  = '';
+  var currentPromo     = false;
+
+  function getPackInfo(q){
+    var total = currentPackPrice * q;
+    var label = q + ' × ' + currentPackName;
+    return {price:total, label:label, promo:currentPromo};
+  }
+
+  // Pack price map
+  var PACK_PRICES = {
+    '1': {price:700,  name:'1 Bottle',              promo:false},
+    '2': {price:750,  name:'2 Bottles (Buy 1 Take 1)', promo:true},
+    '3': {price:1300, name:'3 Bottles',             promo:false}
+  };
+
+  document.querySelectorAll('.pack-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var card  = btn.closest('[data-qty]');
+      var key   = card.dataset.qty;
+      var pack  = PACK_PRICES[key];
+      // Set global pack context
+      currentPackPrice = pack.price;
+      currentPackName  = pack.name;
+      currentPromo     = pack.promo;
+      currentPack      = pack;
+      cartQty          = 1; // always start at 1
+      syncUI();
+      openDrawer();
+    });
+  });
+
+  document.getElementById('plusQty').addEventListener('click',function(){
+    if(!currentPack) return;
+    cartQty++;
+    syncUI();
+  });
+  document.getElementById('minusQty').addEventListener('click',function(){
+    if(!currentPack) return;
+    if(cartQty > 1) cartQty--;
+    syncUI();
+  });
+
+  document.getElementById('cartButton').addEventListener('click',function(){
+    if(!currentPack || currentPackPrice===0){
+      document.getElementById('shop').scrollIntoView({behavior:'smooth'});
+    } else { openDrawer(); }
+  });
+  document.getElementById('mobileOrder').addEventListener('click',function(){
+    if(!currentPack){
+      document.getElementById('shop').scrollIntoView({behavior:'smooth'});
+    } else { openDrawer(); }
+  });
+
+  document.getElementById('closeCart').addEventListener('click',closeDrawer);
+  document.getElementById('removeItem').addEventListener('click',function(){currentPack=null;currentPackPrice=0;currentPackName='';currentPromo=false;cartQty=1;document.getElementById('cartCount').textContent='';closeDrawer();});
+  document.getElementById('continueBtn').addEventListener('click',function(){closeDrawer();openModal('checkoutModal');});
+  document.getElementById('acceptUpsell').addEventListener('click',function(){setQty(qty+1);closeModal('upsellModal');openModal('checkoutModal');});
+  document.getElementById('skipUpsell').addEventListener('click',function(){closeModal('upsellModal');openModal('checkoutModal');});
+
+  document.querySelectorAll('.modal-close').forEach(function(btn){
+    btn.addEventListener('click',function(){closeModal(btn.dataset.modal);});
+  });
+
+  document.getElementById('overlay').addEventListener('click',function(){
+    closeDrawer();
+    document.querySelectorAll('.modal.open').forEach(function(m){closeModal(m.id);});
+  });
+
+  document.getElementById('checkoutForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    var fd=new FormData(this);
+    var name=fd.get('name').trim(),phone=fd.get('phone').trim(),
+        addr=fd.get('address').trim(),city=fd.get('city').trim(),
+        prov=fd.get('province').trim(),pay=fd.get('payment'),
+        consent=fd.get('consent'),err='';
+    if(!name)err='Please enter your full name.';
+    else if(!phone||!/^(09|\+639)\d{9}$/.test(phone.replace(/\s/g,'')))err='Please enter a valid PH mobile number (09XXXXXXXXX).';
+    else if(!addr)err='Please enter your delivery address.';
+    else if(!city)err='Please enter your city.';
+    else if(!prov)err='Please enter your province.';
+    else if(!pay)err='Please select a payment method.';
+    else if(!consent)err='Please agree to the consent to proceed.';
+    document.getElementById('formErr').textContent=err;
+    if(err)return;
+    var ref='DHA-'+(counter++);
+    var finalPrice = currentPackPrice * cartQty;
+    var finalLabel = cartQty+' × '+currentPackName;
+    document.getElementById('customerName').textContent=name.split(' ')[0]||'Mama';
+    document.getElementById('orderRef').textContent=ref;
+    document.getElementById('confirmedQty').textContent=finalLabel;
+    document.getElementById('confirmedTotal').textContent=fmt(finalPrice)+' (incl. shipping)';
+    document.getElementById('confirmedPay').textContent=pay;
+    console.log('[Dr. Vita Order]',{ref:ref,name:name,phone:phone,address:addr+', '+city+', '+prov,pack:currentPackName,qty:cartQty,unitPrice:currentPackPrice,total:finalPrice,payment:pay});
+    closeModal('checkoutModal');openModal('confirmModal');
+    console.log('[Dr. Vita Order]',{ref:ref,name:name,phone:phone,address:addr+', '+city+', '+prov,qty:qty,total:tot(qty),payment:pay});
+  });
+
+  document.getElementById('backHome').addEventListener('click',function(){
+    currentPack=null;currentPackPrice=0;currentPackName='';currentPromo=false;cartQty=1;
+    document.getElementById('cartCount').textContent='';
+    closeModal('confirmModal');
+    document.getElementById('overlay').classList.remove('on');
+    document.body.style.overflow='';
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){
+      document.querySelectorAll('.modal.open').forEach(function(m){closeModal(m.id);});
+      closeDrawer();
+    }
+  });
+
+  // Nav scroll
+  window.addEventListener('scroll',function(){
+    document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>40);
+  },{passive:true});
+
+  // Reveal
+  var ro=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);}});
+  },{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el);});
+})();
+</script>
+</body>
+</html>
