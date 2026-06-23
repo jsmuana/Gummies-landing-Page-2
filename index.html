@@ -936,12 +936,12 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
 .modal{
   display:none;position:fixed;z-index:220;
   top:50%;left:50%;transform:translate(-50%,-48%) scale(.96);
-  width:480px;max-width:calc(100vw - 32px);
+  width:520px;max-width:calc(100vw - 24px);
   background:var(--white);border-radius:var(--rad-xl);
   padding:40px 36px;
   box-shadow:0 32px 80px rgba(0,0,0,.22);
   opacity:0;transition:transform .35s var(--ease-bounce),opacity .3s;
-  max-height:90svh;overflow-y:auto;
+  max-height:92svh;overflow-y:auto;
 }
 .modal.open{display:block;transform:translate(-50%,-50%) scale(1);opacity:1}
 .modal .close-btn{position:absolute;top:20px;right:20px}
@@ -960,36 +960,84 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
   box-shadow:0 4px 12px rgba(239,78,113,.4);
 }
 
-.checkout-modal{padding:0;overflow:hidden}
+.checkout-modal{
+  padding:0;overflow:hidden;
+  display:flex;flex-direction:column;
+  max-height:92svh;
+}
 .checkout-head{
   background:linear-gradient(135deg,var(--r100),var(--blush));
-  padding:32px 36px;border-bottom:1px solid rgba(239,78,113,.12);
+  padding:20px 24px;border-bottom:1px solid rgba(239,78,113,.12);
+  flex-shrink:0;
 }
-.checkout-head h2{font-size:24px;font-weight:900;color:var(--ink);margin-bottom:6px}
-.checkout-head > p{font-size:14px;color:var(--ink-soft)}
+.checkout-head h2{font-size:20px;font-weight:900;color:var(--ink);margin-bottom:4px}
+.checkout-head > p{font-size:13px;color:var(--ink-soft)}
 .checkout-summary{
   display:flex;justify-content:space-between;align-items:center;
-  padding:16px 36px;background:rgba(239,78,113,.05);border-bottom:1px solid rgba(0,0,0,.06);
+  padding:12px 24px;background:rgba(239,78,113,.05);
+  border-bottom:1px solid rgba(0,0,0,.06);
+  flex-shrink:0;
 }
-.checkout-summary span{font-size:14px;color:var(--ink-soft)}
-.checkout-summary b{font-size:16px;font-weight:800;color:var(--r600)}
+.checkout-summary span{font-size:13px;color:var(--ink-soft)}
+.checkout-summary b{font-size:15px;font-weight:800;color:var(--r600)}
 
-#checkoutForm{padding:28px 36px 36px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+/* Scrollable form body */
+.checkout-form-body{
+  overflow-y:auto;
+  flex:1;
+  -webkit-overflow-scrolling:touch;
+}
+
+#checkoutForm{
+  padding:20px 24px 24px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
 #checkoutForm label{
-  display:flex;flex-direction:column;gap:6px;
-  font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);
+  display:flex;flex-direction:column;gap:5px;
+  font-size:11px;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--ink-soft);
 }
 #checkoutForm label.wide{grid-column:1/-1}
-#checkoutForm input,#checkoutForm textarea,#checkoutForm select{
-  padding:12px 14px;border:1.5px solid rgba(0,0,0,.1);border-radius:var(--rad-sm);
-  font-family:'DM Sans',sans-serif;font-size:15px;color:var(--ink);background:var(--cream);
-  transition:border-color .2s,box-shadow .2s;outline:none;
+#checkoutForm input,
+#checkoutForm textarea,
+#checkoutForm select{
+  padding:10px 12px;
+  border:1.5px solid rgba(0,0,0,.1);
+  border-radius:var(--rad-sm);
+  font-family:'DM Sans',sans-serif;
+  font-size:14px;color:var(--ink);
+  background:var(--cream);
+  transition:border-color .2s,box-shadow .2s;
+  outline:none;
 }
-#checkoutForm input:focus,#checkoutForm textarea:focus,#checkoutForm select:focus{border-color:var(--r400);box-shadow:0 0 0 3px rgba(239,78,113,.12)}
-#checkoutForm textarea{resize:vertical;min-height:80px}
-#checkoutForm .consent{flex-direction:row;gap:10px;align-items:flex-start;font-size:12px;text-transform:none;letter-spacing:0;color:var(--ink-soft)}
-#checkoutForm .consent input{width:16px;height:16px;margin-top:2px;flex-shrink:0;accent-color:var(--r500)}
-.form-err{color:var(--r600);font-size:13px;font-weight:600}
+#checkoutForm input:focus,
+#checkoutForm textarea:focus,
+#checkoutForm select:focus{
+  border-color:var(--r400);
+  box-shadow:0 0 0 3px rgba(239,78,113,.12);
+}
+#checkoutForm textarea{resize:none;min-height:60px}
+#checkoutForm .consent{
+  flex-direction:row;gap:8px;align-items:flex-start;
+  font-size:11px;text-transform:none;letter-spacing:0;color:var(--ink-soft);
+}
+#checkoutForm .consent input{
+  width:16px;height:16px;margin-top:2px;
+  flex-shrink:0;accent-color:var(--r500);
+}
+.form-err{color:var(--r600);font-size:12px;font-weight:600}
+
+/* Section dividers inside form */
+.form-section-label{
+  grid-column:1/-1;
+  font-size:11px;font-weight:800;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink);
+  padding-top:8px;border-top:1px solid rgba(0,0,0,.07);
+  margin-top:4px;
+}
+.form-section-label:first-child{border-top:none;padding-top:0;margin-top:0}
 
 .confirm-modal{text-align:center}
 .success-mark{
@@ -1048,9 +1096,11 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
   footer{padding:40px 20px}
   .mobile-sticky{display:flex}
   body{padding-bottom:72px}
-  #checkoutForm{grid-template-columns:1fr;padding:24px}
-  .checkout-head,.checkout-summary{padding-left:24px;padding-right:24px}
-  .modal{padding:32px 24px}
+  #checkoutForm{grid-template-columns:1fr;padding:16px 16px 20px}
+  .checkout-head{padding:16px}
+  .checkout-summary{padding:10px 16px}
+  .modal{padding:24px 16px}
+  .checkout-modal{max-height:95svh}
   .pack-card h3{font-size:24px}
   .testi-grid{gap:16px}
   .testi-card img{border-radius:16px}
@@ -1583,31 +1633,41 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
     <span id="checkoutQty">1 bottle</span>
     <b id="checkoutTotal">₱700 total</b>
   </div>
+  <div class="checkout-form-body">
   <form id="checkoutForm" novalidate>
+
+    <div class="form-section-label">👤 Customer Information</div>
     <label>First Name<input name="firstname" autocomplete="given-name" required placeholder="Juan"></label>
     <label>Last Name<input name="lastname" autocomplete="family-name" required placeholder="Dela Cruz"></label>
-    <label>Mobile Number<input name="phone" inputmode="tel" autocomplete="tel" required placeholder="09XX XXX XXXX"></label>
+    <label class="wide">Mobile Number<input name="phone" inputmode="tel" autocomplete="tel" required placeholder="09XX XXX XXXX"></label>
     <label class="wide">Email Address<input name="email" type="email" inputmode="email" autocomplete="email" placeholder="juan@email.com (optional)"></label>
+
+    <div class="form-section-label">📦 Delivery Address</div>
     <label class="wide">Complete Address<input name="address" autocomplete="street-address" required placeholder="House no., Street, Lot/Blk"></label>
     <label>Barangay / Sitio<input name="barangay" required placeholder="Brgy. San Jose"></label>
     <label>City / Town<input name="city" autocomplete="address-level2" required placeholder="Davao City"></label>
-    <label>Province<input name="province" autocomplete="address-level1" required placeholder="Davao del Sur"></label>
-    <label class="wide">Landmark<textarea name="landmark" placeholder="e.g. Malapit sa palengke, may asul na gate..." style="min-height:60px"></textarea></label>
-    <label class="wide">Payment Method
+    <label class="wide">Province<input name="province" autocomplete="address-level1" required placeholder="Davao del Sur"></label>
+    <label class="wide">Landmark<textarea name="landmark" placeholder="e.g. Malapit sa palengke, may asul na gate..."></textarea></label>
+
+    <div class="form-section-label">💳 Payment Method</div>
+    <label class="wide">Select Payment
       <select name="payment" required>
-        <option value="">Select payment</option>
+        <option value="">— Piliin ang payment method —</option>
         <option>Cash on Delivery</option>
         <option>GCash</option>
         <option>Bank Transfer</option>
       </select>
     </label>
+
     <label class="consent wide">
       <input type="checkbox" name="consent" required>
-      <span>I agree to share my information for order processing and delivery confirmation.</span>
+      <span>Sumasang-ayon po ako na ibahagi ang aking impormasyon para sa order processing at delivery confirmation.</span>
     </label>
     <div class="form-err wide" id="formErr"></div>
-    <button class="btn btn-primary btn-full wide" type="submit">Confirm My Order <span class="btn-arrow">→</span></button>
+    <button class="btn btn-primary btn-full wide" type="submit">Confirm My Order ✓</button>
+
   </form>
+  </div>
 </div>
 
 <!-- Confirmation Modal -->
