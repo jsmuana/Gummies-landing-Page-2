@@ -741,7 +741,7 @@ em{font-style:italic;color:var(--r500)}
   background:rgba(255,255,255,.07);
   backdrop-filter:blur(10px);
   border:1px solid rgba(255,255,255,.1);
-  border-radius:var(--rad-xl);padding:36px 28px;
+  border-radius:var(--rad-xl);padding:28px 20px;
   transition:transform .3s var(--ease-smooth),background .3s;
   position:relative;overflow:visible;text-align:center;
 }
@@ -811,6 +811,9 @@ em{font-style:italic;color:var(--r500)}
   background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.15);
   color:#fff;font-family:'Manrope',sans-serif;font-weight:700;font-size:14px;
   transition:all .25s;cursor:pointer;
+  position:relative;z-index:2;
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+  touch-action:manipulation;
 }
 .pack-btn:hover{background:var(--r500);border-color:var(--r500);transform:translateY(-2px)}
 .pack-card.popular .pack-btn{background:var(--r500);border-color:var(--r500)}
@@ -998,17 +1001,17 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
 
 #checkoutForm{padding:28px 36px 36px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
 #checkoutForm label{
-  display:flex;flex-direction:column;gap:4px;
-  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);
+  display:flex;flex-direction:column;gap:3px;
+  font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);
 }
 #checkoutForm label.wide{grid-column:1/-1}
 #checkoutForm input,#checkoutForm textarea,#checkoutForm select{
-  padding:9px 12px;border:1.5px solid rgba(0,0,0,.1);border-radius:var(--rad-sm);
-  font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);background:var(--cream);
+  padding:8px 10px;border:1.5px solid rgba(0,0,0,.1);border-radius:var(--rad-sm);
+  font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);background:var(--cream);
   transition:border-color .2s,box-shadow .2s;outline:none;
 }
 #checkoutForm input:focus,#checkoutForm textarea:focus,#checkoutForm select:focus{border-color:var(--r400);box-shadow:0 0 0 3px rgba(239,78,113,.12)}
-#checkoutForm textarea{resize:none;min-height:60px}
+#checkoutForm textarea{resize:none;min-height:52px}
 #checkoutForm .consent{flex-direction:row;gap:10px;align-items:flex-start;font-size:12px;text-transform:none;letter-spacing:0;color:var(--ink-soft)}
 #checkoutForm .consent input{width:16px;height:16px;margin-top:2px;flex-shrink:0;accent-color:var(--r500)}
 .form-err{color:var(--r600);font-size:13px;font-weight:600}
