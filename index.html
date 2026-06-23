@@ -6,17 +6,6 @@
   <meta name="theme-color" content="#ef4e71">
   <meta name="description" content="Dr. Vita DHA with B-Vitamins strawberry gummies for kids. A parent-friendly food supplement for daily nutrition support.">
   <title>Dr. Vita DHA Gummies | Daily Nutrition Made Kid-Friendly</title>
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://gummies-landing-page-2.vercel.app/">
-  <meta property="og:title" content="Dr. Vita DHA Gummies | Daily Nutrition Made Kid-Friendly">
-  <meta property="og:description" content="Strawberry-flavored DHA with B-Vitamins gummies for kids. ₱700 lang — shipping included! Cash on Delivery available.">
-  <meta property="og:image" content="https://gummies-landing-page-2.vercel.app/assets/img_03.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://gummies-landing-page-2.vercel.app/assets/img_03.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@500;600;700;800;900&display=swap" rel="stylesheet">
@@ -279,6 +268,45 @@ em{font-style:italic;color:var(--r500)}
 }
 .marquee-track i{color:var(--r400);font-style:normal;font-size:10px}
 @keyframes marqueeRoll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ============================================================
+   COUNTDOWN TIMER
+   ============================================================ */
+.countdown-bar{
+  background:linear-gradient(135deg,var(--ink),var(--r900));
+  padding:18px 24px;
+  display:flex;align-items:center;justify-content:center;
+  gap:24px;flex-wrap:wrap;
+}
+.countdown-label{
+  font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;
+  color:rgba(255,255,255,.7);letter-spacing:.04em;text-transform:uppercase;
+  display:flex;align-items:center;gap:8px;
+}
+.countdown-label::before{content:'🔥'}
+.countdown-units{display:flex;align-items:center;gap:8px}
+.countdown-unit{
+  display:flex;flex-direction:column;align-items:center;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:10px;padding:8px 14px;min-width:56px;
+}
+.countdown-unit b{
+  font-family:'Manrope',sans-serif;font-size:22px;font-weight:900;
+  color:#fff;line-height:1;letter-spacing:-.02em;
+}
+.countdown-unit span{font-size:10px;font-weight:700;color:rgba(255,255,255,.4);letter-spacing:.08em;text-transform:uppercase;margin-top:3px}
+.countdown-sep{font-size:20px;font-weight:900;color:var(--r400);margin-bottom:12px}
+.countdown-cta{
+  font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;
+  color:var(--r300);
+}
+@media(max-width:768px){
+  .countdown-bar{gap:12px;padding:14px 16px}
+  .countdown-unit{min-width:48px;padding:6px 10px}
+  .countdown-unit b{font-size:18px}
+  .countdown-label{font-size:12px}
+}
 
 /* ============================================================
    SECTION LABEL
@@ -777,7 +805,7 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
   .bottle-wrap img{width:220px}
   .float-badge{display:none}
   .gummies-orbit{display:none}
-  .benefit-grid,.testimonial-grid,.testi-grid{grid-template-columns:1fr}
+  .benefit-grid,.testimonial-grid{grid-template-columns:1fr}
   .pack-grid{grid-template-columns:1fr;gap:16px;max-width:380px;margin-left:auto;margin-right:auto}
   .shop,.story,.benefits,.ritual,.faq,.testimonials{padding:64px 20px}
   .shop-trust{flex-direction:column;align-items:center;gap:12px}
@@ -788,8 +816,6 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
   .checkout-head,.checkout-summary{padding-left:24px;padding-right:24px}
   .modal{padding:32px 24px}
   .pack-card h3{font-size:24px}
-  .testi-grid{gap:16px;max-width:400px;margin-left:auto;margin-right:auto}
-  .testi-card img{border-radius:16px}
   .pack-price b{font-size:32px}
   .pack-img{height:180px}
   .pack-img.group-img img{height:160px}
@@ -828,7 +854,7 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
     <a href="#faq">FAQ</a>
   </nav>
   <button class="nav-cart" id="cartButton" type="button" aria-label="Open order">
-    Cart <span id="cartCount"></span>
+    Bag <span id="cartCount">0</span>
   </button>
 </header>
 
@@ -875,6 +901,19 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
     <span>PARENT-FRIENDLY</span><i>✦</i><span>DAILY NUTRITION SUPPORT</span><i>✦</i>
   </div>
 </section>
+
+<!-- ======== COUNTDOWN TIMER ======== -->
+<div class="countdown-bar" id="countdownBar">
+  <div class="countdown-label">Limited-time offer ends in</div>
+  <div class="countdown-units">
+    <div class="countdown-unit"><b id="cdHours">00</b><span>Hours</span></div>
+    <div class="countdown-sep">:</div>
+    <div class="countdown-unit"><b id="cdMins">00</b><span>Mins</span></div>
+    <div class="countdown-sep">:</div>
+    <div class="countdown-unit"><b id="cdSecs">00</b><span>Secs</span></div>
+  </div>
+  <div class="countdown-cta">↓ Order before it expires!</div>
+</div>
 
 <!-- ======== STORY ======== -->
 <section class="story" id="story">
@@ -1056,12 +1095,17 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
     <a class="text-link" href="#">Message us on Facebook <span>→</span></a>
   </div>
   <div class="accordion reveal d1">
-    <details open><summary>What is Dr. Vita DHA Gummies?<span>+</span></summary><p>A strawberry-flavored food supplement gummy with DHA and B-Vitamins for kids.</p></details>
-    <details><summary>Is this medicine?<span>+</span></summary><p>No. Dr. Vita is a food supplement and is not a medicine. It is not intended to diagnose, treat, cure, or prevent any disease.</p></details>
-    <details><summary>How many gummies are in one bottle?<span>+</span></summary><p>Each bottle contains 30 individually wrapped gummies.</p></details>
-    <details><summary>Is this okay for picky eaters?<span>+</span></summary><p>It may be a more enjoyable option for kids who do not like regular vitamins, but a balanced diet remains important.</p></details>
-    <details><summary>Should I consult a doctor?<span>+</span></summary><p>Yes, especially if your child has allergies, a medical condition, or takes other supplements or medicines.</p></details>
-    <details><summary>What happens after I order?<span>+</span></summary><p>Our team will contact you to confirm your details and delivery. Expect a message within 24-48 hours.</p></details>
+    <details open><summary>What is Dr. Vita DHA Gummies?<span>+</span></summary><p>Dr. Vita DHA Gummies is a strawberry-flavored food supplement gummy with DHA and B-Vitamins, designed to support your child's daily nutrition routine in a fun and enjoyable way.</p></details>
+    <details><summary>Is this a medicine?<span>+</span></summary><p>No. Dr. Vita is a food supplement only — not a medicine. It is not intended to diagnose, treat, cure, or prevent any disease. Always consult your doctor for medical concerns.</p></details>
+    <details><summary>How many gummies are in one bottle?<span>+</span></summary><p>Each bottle contains 30 individually wrapped strawberry gummies — good for 30 days when taken once daily.</p></details>
+    <details><summary>Puwede ba sa mga bata na choosy kumain?<span>+</span></summary><p>Yes! Maraming nanay ang nag-share na mas madali na siyang painumin ang kanilang anak dahil sa strawberry flavor ng Dr. Vita. It may make supplement time more enjoyable — pero tandaan, hindi siya kapalit ng balanced diet.</p></details>
+    <details><summary>Ilang taon ang pwedeng uminom nito?<span>+</span></summary><p>Please follow the recommended age and dosage instructions on the product label. When in doubt, consult your pediatrician before giving any supplement to your child.</p></details>
+    <details><summary>May side effects ba?<span>+</span></summary><p>Dr. Vita DHA Gummies is a food supplement. However, if your child experiences any unusual reaction, stop use immediately and consult a doctor. Always check the ingredients list if your child has known allergies.</p></details>
+    <details><summary>Should I consult a doctor first?<span>+</span></summary><p>Yes, especially if your child has existing health conditions, allergies, or is taking other medications or supplements. It's always best to ask your pediatrician.</p></details>
+    <details><summary>How do I pay? Is COD available?<span>+</span></summary><p>Yes! We accept Cash on Delivery (COD), GCash, and Bank Transfer. All prices already include the shipping fee — no hidden charges.</p></details>
+    <details><summary>How long before my order arrives?<span>+</span></summary><p>Our team will contact you within 24-48 hours to confirm your order and delivery details. Delivery time varies by location — typically 3-7 business days.</p></details>
+    <details><summary>What happens after I place my order?<span>+</span></summary><p>You will receive a confirmation call or message from our team within 24-48 hours. We'll verify your delivery address and payment method before processing your order.</p></details>
+    <details><summary>Can I order multiple bottles?<span>+</span></summary><p>Yes! In fact, our Buy 1 Take 1 promo (2 bottles for only ₱750) is our most popular option. You can also order 3 bottles for just ₱1,300 — all with shipping already included!</p></details>
   </div>
 </section>
 
@@ -1076,7 +1120,7 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
   <div class="footer-bottom"><span>© 2026 Dr. Vita</span><span>Privacy · Terms</span></div>
 </footer>
 
-<button class="mobile-sticky" id="mobileOrder" type="button"><span>Order Dr. Vita</span><b>Order Now →</b></button>
+<button class="mobile-sticky" id="mobileOrder" type="button"><span>Order Dr. Vita</span><b>₱550 →</b></button>
 
 <div class="overlay" id="overlay"></div>
 
@@ -1360,6 +1404,40 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
     entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);}});
   },{threshold:.1,rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el);});
+  // ── COUNTDOWN TIMER ──────────────────────────────────────────────────
+  (function(){
+    // Set deadline: 24 hours from first visit, stored in sessionStorage
+    var key = 'dvita_deadline';
+    var deadline = sessionStorage.getItem(key);
+    if(!deadline){
+      // 23 hours 59 mins from now for urgency
+      deadline = Date.now() + (23*60*60*1000 + 59*60*1000);
+      sessionStorage.setItem(key, deadline);
+    }
+    deadline = parseInt(deadline);
+
+    function pad(n){ return n < 10 ? '0'+n : ''+n; }
+
+    function tick(){
+      var now  = Date.now();
+      var diff = deadline - now;
+      if(diff <= 0){
+        // Reset when expired — restart the timer
+        deadline = Date.now() + (23*60*60*1000 + 59*60*1000);
+        sessionStorage.setItem(key, deadline);
+        diff = deadline - Date.now();
+      }
+      var h = Math.floor(diff / 3600000);
+      var m = Math.floor((diff % 3600000) / 60000);
+      var s = Math.floor((diff % 60000) / 1000);
+      document.getElementById('cdHours').textContent = pad(h);
+      document.getElementById('cdMins').textContent  = pad(m);
+      document.getElementById('cdSecs').textContent  = pad(s);
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
+
 })();
 </script>
 </body>
