@@ -634,7 +634,7 @@ em{font-style:italic;color:var(--r500)}
   width:52px;height:52px;border-radius:var(--rad);
   background:var(--r100);display:grid;place-items:center;
   font-family:'Manrope',sans-serif;font-weight:900;font-size:13px;color:var(--r600);
-  margin-bottom:20px;
+  margin-bottom:14px;
 }
 .ben-card.featured .icon-orb{background:rgba(255,255,255,.22);color:#fff}
 .ben-card.dark .icon-orb{background:rgba(255,255,255,.08);color:rgba(255,255,255,.8)}
@@ -949,24 +949,51 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
 /* Checkout specific - form scrolls, button fixed */
 #checkoutModal{
   padding:0;
-  display:flex;
-  flex-direction:column;
+  display:none;
+  flex-direction:row;
   overflow:hidden;
-  max-height:92svh;
+  width:min(880px,calc(100vw - 36px));
+  max-height:88svh;
+  border-radius:10px;
+  background:#fff;
 }
-#checkoutModal .checkout-head{flex-shrink:0}
-#checkoutModal .checkout-summary{flex-shrink:0}
-#checkoutModal form{
-  flex:1;
+#checkoutModal.open{display:flex}
+#checkoutModal .modal-close{
+  top:14px;
+  right:14px;
+  width:42px;
+  height:42px;
+  background:#fff;
+  border-radius:50%;
+  color:#111827;
+  font-size:28px;
+  z-index:3;
+  box-shadow:none;
+}
+#checkoutModal .checkout-left{
+  flex:1 1 58%;
+  padding:30px 42px 34px;
   overflow-y:auto;
   -webkit-overflow-scrolling:touch;
-  padding:20px 28px;
+}
+#checkoutModal .checkout-right{
+  flex:0 0 36%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:42px 34px;
+  background:#fff;
+  border-left:1px solid rgba(0,0,0,.06);
+  box-shadow:-18px 0 44px rgba(0,0,0,.035);
+}
+#checkoutModal form{
+  padding:0;
 }
 #checkoutModal .confirm-btn-wrap{
   flex-shrink:0;
-  padding:12px 24px 16px;
-  background:#fff;
-  border-top:1px solid rgba(0,0,0,.07);
+  padding:0;
+  background:transparent;
+  border-top:0;
 }
 .modal.open{display:block;transform:translate(-50%,-50%) scale(1);opacity:1}
 .modal .close-btn{position:absolute;top:20px;right:20px}
@@ -987,34 +1014,323 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
 
 .checkout-modal{padding:0;overflow:hidden}
 .checkout-head{
-  background:linear-gradient(135deg,var(--r100),var(--blush));
-  padding:18px 24px;border-bottom:1px solid rgba(239,78,113,.12);
+  background:transparent;
+  padding:0;
+  border-bottom:0;
+  margin-bottom:14px;
 }
-.checkout-head h2{font-size:20px;font-weight:900;color:var(--ink);margin-bottom:4px}
-.checkout-head > p{font-size:13px;color:var(--ink-soft)}
+.checkout-head .sec-label{
+  color:#222;
+  font-size:17px;
+  font-weight:500;
+  letter-spacing:0;
+  text-transform:none;
+  margin-bottom:16px;
+}
+.checkout-head .sec-label::before{
+  display:none;
+}
+.checkout-head .sec-label::after,
+.checkout-panel h3::after{
+  content:"";
+  display:block;
+  width:54px;
+  height:1px;
+  background:#cfcfcf;
+  margin-top:8px;
+}
+.checkout-head h2{
+  display:none;
+}
+.checkout-head > p{
+  display:none;
+}
 .checkout-summary{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:10px 24px;background:rgba(239,78,113,.05);border-bottom:1px solid rgba(0,0,0,.06);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding:18px 0;
+  border-bottom:1px solid rgba(0,0,0,.08);
+  margin-bottom:18px;
 }
-.checkout-summary span{font-size:14px;color:var(--ink-soft)}
-.checkout-summary b{font-size:16px;font-weight:800;color:var(--r600)}
+.checkout-summary img{
+  width:58px;
+  height:46px;
+  object-fit:contain;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:4px;
+  background:#fff;
+}
+.checkout-summary div{
+  flex:1;
+}
+.checkout-summary span{display:block;font-size:13px;color:#555}
+.checkout-summary b{font-size:15px;font-weight:800;color:#333}
+.checkout-total-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin:10px 0 22px;
+  color:#333;
+}
+.checkout-total-row span{font-size:14px;color:#555}
+.checkout-total-row b{font-family:'Manrope',sans-serif;font-size:26px;font-weight:900;color:#2b2b2b}
+.checkout-panel h3{
+  font-family:'DM Sans',sans-serif;
+  font-size:16px;
+  font-weight:500;
+  color:#333;
+  margin-bottom:12px;
+}
+.checkout-perks{
+  grid-column:1/-1;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:8px;
+}
+.checkout-perks span{
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  min-height:40px;
+  padding:9px 14px;
+  border-radius:4px;
+  background:#fff;
+  border:1px solid rgba(239,78,113,.24);
+  color:var(--ink-mid);
+  font-family:'DM Sans',sans-serif;
+  font-size:13px;
+  font-weight:500;
+}
+.checkout-perks span::before{
+  content:"✓";
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--r500),var(--r600));
+  margin-right:12px;
+  flex-shrink:0;
+  display:grid;
+  place-items:center;
+  color:#fff;
+  font-size:12px;
+  font-weight:900;
+  box-shadow:0 3px 8px rgba(239,78,113,.25);
+}
+.checkout-trust{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+  margin-top:20px;
+}
+.checkout-trust span{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:12px;
+  line-height:1.35;
+  color:var(--r600);
+  font-weight:600;
+}
+.checkout-trust svg{
+  width:28px;
+  height:28px;
+  flex-shrink:0;
+  stroke:var(--r500);
+}
 
-#checkoutForm{padding:28px 36px 36px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+#checkoutForm{display:grid;grid-template-columns:1fr 1fr;gap:7px 14px}
 #checkoutForm label{
-  display:flex;flex-direction:column;gap:3px;
-  font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);
+  display:flex;flex-direction:column;gap:6px;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
 }
 #checkoutForm label.wide{grid-column:1/-1}
 #checkoutForm input,#checkoutForm textarea,#checkoutForm select{
-  padding:8px 10px;border:1.5px solid rgba(0,0,0,.1);border-radius:var(--rad-sm);
-  font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);background:var(--cream);
+  height:38px;
+  padding:9px 13px;
+  border:1px solid var(--r400);
+  border-radius:2px;
+  font-family:'DM Sans',sans-serif;font-size:12px;color:#333;background:#fff;
   transition:border-color .2s,box-shadow .2s;outline:none;
 }
-#checkoutForm input:focus,#checkoutForm textarea:focus,#checkoutForm select:focus{border-color:var(--r400);box-shadow:0 0 0 3px rgba(239,78,113,.12)}
-#checkoutForm textarea{resize:none;min-height:52px}
-#checkoutForm .consent{flex-direction:row;gap:10px;align-items:flex-start;font-size:12px;text-transform:none;letter-spacing:0;color:var(--ink-soft)}
-#checkoutForm .consent input{width:16px;height:16px;margin-top:2px;flex-shrink:0;accent-color:var(--r500)}
+#checkoutForm input:focus,#checkoutForm textarea:focus,#checkoutForm select:focus{border-color:var(--r500);box-shadow:0 0 0 3px rgba(239,78,113,.12)}
+#checkoutForm textarea{resize:none;min-height:38px}
+#checkoutForm .consent{flex-direction:row;gap:10px;align-items:flex-start;font-size:12px;text-transform:none;letter-spacing:0;color:#555;margin-top:2px}
+#checkoutForm .consent input{width:18px;height:18px;margin-top:1px;flex-shrink:0;accent-color:var(--r500)}
 .form-err{color:var(--r600);font-size:13px;font-weight:600}
+#confirmOrderBtn{
+  background:linear-gradient(135deg,var(--r500),var(--r600));
+  border-radius:8px;
+  box-shadow:0 12px 28px rgba(239,78,113,.24);
+  color:#fff;
+  font-size:22px!important;
+  font-weight:500!important;
+  padding:18px!important;
+}
+#confirmOrderBtn:hover{
+  background:linear-gradient(135deg,var(--r400),var(--r600));
+  box-shadow:0 14px 34px rgba(239,78,113,.3);
+  transform:none;
+}
+#confirmOrderBtn:disabled{
+  cursor:not-allowed;
+  opacity:.48;
+  box-shadow:none;
+  filter:grayscale(.15);
+}
+
+#checkoutModal{
+  display:none;
+  grid-template-columns:minmax(0,1.25fr) minmax(280px,.82fr);
+  grid-template-areas:
+    "head summary"
+    "form summary"
+    "form action";
+  align-items:stretch;
+  gap:0;
+  overflow-y:auto;
+  overscroll-behavior:contain;
+}
+#checkoutModal.open{display:grid}
+#checkoutModal .checkout-head{
+  grid-area:head;
+  padding:22px 34px 0;
+}
+#checkoutModal .checkout-summary{
+  position:relative;
+  grid-area:summary;
+  align-self:start;
+  min-height:240px;
+  flex-direction:column;
+  align-items:stretch;
+  justify-content:center;
+  padding:28px 28px 14px;
+  margin:0;
+  border-left:1px solid rgba(0,0,0,.06);
+  border-bottom:0;
+  box-shadow:-18px 0 44px rgba(0,0,0,.035);
+}
+#checkoutModal .checkout-summary::before{
+  content:"Order Summary";
+  display:block;
+  font-family:'DM Sans',sans-serif;
+  font-size:17px;
+  font-weight:500;
+  color:#333;
+  padding-bottom:26px;
+}
+#checkoutModal .checkout-summary::after{
+  content:"";
+  display:block;
+  width:54px;
+  height:1px;
+  background:#cfcfcf;
+  position:absolute;
+  top:64px;
+  left:28px;
+}
+#checkoutModal .checkout-summary span{
+  font-size:14px;
+  color:#555;
+}
+.checkout-item-row{
+  display:grid;
+  grid-template-columns:58px minmax(0,1fr) auto;
+  align-items:center;
+  gap:12px;
+  padding-bottom:18px;
+}
+#checkoutModal .checkout-summary-img{
+  width:58px;
+  height:46px;
+  object-fit:contain;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:4px;
+  background:#fff;
+  margin:0;
+}
+.checkout-item-copy{
+  min-width:0;
+}
+.checkout-item-copy span{
+  display:block;
+  line-height:1.35;
+}
+.checkout-qty-control{
+  display:inline-flex;
+  align-items:center;
+  justify-self:end;
+  align-self:center;
+  margin:0;
+  border:1px solid rgba(239,78,113,.22);
+  border-radius:8px;
+  overflow:hidden;
+  background:#fff;
+  width:max-content;
+  white-space:nowrap;
+}
+.checkout-qty-control button,
+.checkout-qty-control strong{
+  width:30px;
+  height:30px;
+  display:grid;
+  place-items:center;
+  font-family:'Manrope',sans-serif;
+  font-size:14px;
+}
+.checkout-qty-control button{
+  color:var(--r600);
+  background:var(--r100);
+  transition:background .2s,color .2s;
+}
+.checkout-qty-control button:hover{
+  background:var(--r500);
+  color:#fff;
+}
+.checkout-qty-control strong{
+  color:var(--ink);
+  border-left:1px solid rgba(239,78,113,.16);
+  border-right:1px solid rgba(239,78,113,.16);
+}
+#checkoutModal .checkout-summary b{
+  display:block;
+  margin-top:30px;
+  padding-top:22px;
+  border-top:1px solid rgba(0,0,0,.08);
+  text-align:right;
+  font-family:'Manrope',sans-serif;
+  font-size:28px;
+  color:#2b2b2b;
+}
+#checkoutModal .checkout-summary b::before{
+  content:"Total:";
+  float:left;
+  margin-top:6px;
+  font-family:'DM Sans',sans-serif;
+  font-size:14px;
+  font-weight:400;
+  color:#555;
+}
+#checkoutModal form{
+  grid-area:form;
+  overflow:visible;
+  padding:0 34px 24px;
+}
+#checkoutModal .confirm-btn-wrap{
+  grid-area:action;
+  align-self:end;
+  position:sticky;
+  bottom:0;
+  padding:0 28px 26px;
+  background:#fff;
+  border-left:1px solid rgba(0,0,0,.06);
+  box-shadow:-18px 0 44px rgba(0,0,0,.035);
+}
 
 .confirm-modal{text-align:center}
 .success-mark{
@@ -1073,8 +1389,44 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
   footer{padding:40px 20px}
   .mobile-sticky{display:flex}
   body{padding-bottom:72px}
-  #checkoutForm{grid-template-columns:1fr;padding:24px}
-  .checkout-head,.checkout-summary{padding-left:24px;padding-right:24px}
+  #checkoutModal{
+    width:calc(100vw - 20px);
+    grid-template-columns:1fr;
+    grid-template-areas:
+      "head"
+      "form"
+      "summary"
+      "action";
+    max-height:92svh;
+    overflow-y:auto;
+  }
+  #checkoutModal .checkout-head{padding:28px 24px 0}
+  #checkoutModal form{grid-template-columns:1fr;padding:0 24px 22px;overflow:visible}
+  #checkoutModal .checkout-summary{
+    padding:24px;
+    border-left:0;
+    border-top:1px solid rgba(0,0,0,.06);
+    box-shadow:none;
+  }
+  .checkout-item-row{
+    grid-template-columns:50px minmax(0,1fr) auto;
+    gap:10px;
+  }
+  #checkoutModal .checkout-summary-img{
+    width:50px;
+    height:42px;
+  }
+  .checkout-qty-control button,
+  .checkout-qty-control strong{
+    width:28px;
+    height:28px;
+  }
+  #checkoutModal .checkout-summary::after{display:none}
+  #checkoutModal .confirm-btn-wrap{
+    padding:0 24px 28px;
+    border-left:0;
+    box-shadow:none;
+  }
   .modal{padding:32px 24px}
   .pack-card h3{font-size:24px}
   .testi-grid{gap:16px}
@@ -1529,9 +1881,9 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
     <details><summary>How many gummies are in one bottle?<span>+</span></summary><p>30 individually wrapped strawberry gummies po ang nasa bawat bottle — good for one full month kapag ininom po ng once daily. Simple, consistent, at effective po talaga!</p></details>
     <details><summary>Puwede ba sa mga bata na choosy kumain?<span>+</span></summary><p>Ito po talaga ang pinaka-sikat na rason kung bakit nag-o-order ang mga nanay! Dahil po sa masarap na strawberry flavor, ang mga bata mismo na ang humihingi ng gummy nila araw-araw. Hindi na po kailangan pang pilitin pa — gusto na nila ito! 🎉</p></details>
     <details><summary>Ilang taon ang pwedeng uminom nito?<span>+</span></summary><p>Dr. Vita DHA Gummies po ay perpekto para sa mga school-age kids na nangangailangan ng daily nutritional support. Sundin lang po ang dosage instructions na nakalagay sa product label para sa tamang serving per age group.</p></details>
-    <details><summary>How do I pay? Is COD available?<span>+</span></summary><p>Opo! Tumatanggap po kami ng Cash on Delivery (COD), GCash, at Bank Transfer. Lahat po ng presyo ay kasama na ang shipping fee — walang hidden charges, walang sorpresa sa delivery! 🙌</p></details>
+    <details><summary>How do I pay? Is COD available?<span>+</span></summary><p>Opo! Cash on Delivery po tayo para mas simple at kampante kayo pagdating ng order. Free shipping na rin po — kasama na sa displayed price, walang dagdag na delivery fee.</p></details>
     <details><summary>How long before my order arrives?<span>+</span></summary><p>Makikipag-ugnayan po sa inyo ang aming team within 24 hours para i-confirm ang inyong order. Ang delivery po ay karaniwang 3-7 business days depende sa inyong lokasyon. Mabilis at maaasahan po ang aming serbisyo! 📦</p></details>
-    <details><summary>What happens after I place my order?<span>+</span></summary><p>Makakatanggap po kayo ng confirmation call o message mula sa aming team within 24 hours. I-verify lang po namin ang inyong address at payment method — tapos ipapa-deliver na namin agad sa inyo!</p></details>
+    <details><summary>What happens after I place my order?<span>+</span></summary><p>Makakatanggap po kayo ng confirmation call o message mula sa aming team within 24 hours. I-verify lang po namin ang inyong address at COD order details — tapos ipapa-deliver na namin agad sa inyo!</p></details>
     <details><summary>Can I order multiple bottles?<span>+</span></summary><p>Oo naman po! Ang aming Buy 1 Take 1 promo (2 bottles for only ₱750) ay pinaka-sikat na option ng mga nanay. Makatitipid po kayo ng ₱650 agad! O kumuha po ng 3 bottles for ₱1,300 lang — lahat kasama na ang shipping. Mas marami, mas malaking savings po! 💰</p></details>
     <details><summary>Pwede bang bigyan ng marami ang anak para mas mabilis ang epekto?<span>+</span></summary><p>Hindi po recommended na bigyan ng sobra-sobra ang inyong anak. Ayon kay Doc Cecille Catapang, may vitamins po ang Dr. Vita DHA Gummies kaya kailangan sundin ang tamang dosage — 1 to 2 gummies per day lang po. Importante po ito dahil ang ilang vitamins tulad ng Vitamin A, D, at E ay maaaring mag-cause ng overdose kapag kinuha nang higit sa inirerekomenda. Sundin po palagi ang instructions sa label para sa kaligtasan ng inyong anak. ✅</p></details>
   </div>
@@ -1560,7 +1912,7 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
   </div>
   <div class="cart-prod">
     <img src="assets/img_02.png" alt="">
-    <div><b>Dr. Vita DHA Gummies</b><small>30 gummies · Strawberry</small><span id="cartPrice" style="font-size:15px;font-weight:800;color:var(--r500)">₱700 · shipping incl.</span></div>
+    <div><b>Dr. Vita DHA Gummies</b><small>30 gummies · Strawberry</small><span id="cartPrice" style="font-size:15px;font-weight:800;color:var(--r500)">₱700 · Free Shipping</span></div>
   </div>
   <div class="qty-row">
     <span>Quantity</span>
@@ -1600,28 +1952,40 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
 <div class="modal checkout-modal" id="checkoutModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
   <button class="close-btn modal-close" data-modal="checkoutModal" type="button" aria-label="Close">×</button>
   <div class="checkout-head">
-    <div class="sec-label">Secure checkout</div>
+    <div class="sec-label">Customer Information</div>
     <h2 id="checkoutTitle">Complete your order</h2>
     <p>We'll contact you to confirm delivery.</p>
   </div>
   <div class="checkout-summary">
-    <span id="checkoutQty">1 bottle</span>
-    <b id="checkoutTotal">₱700 total</b>
+    <div class="checkout-item-row">
+      <div class="checkout-item-copy">
+        <span id="checkoutQty">1 bottle</span>
+      </div>
+      <div class="checkout-qty-control" aria-label="Adjust checkout quantity">
+        <button id="checkoutMinusQty" type="button" aria-label="Decrease checkout quantity">−</button>
+        <strong id="checkoutQuantity">1</strong>
+        <button id="checkoutPlusQty" type="button" aria-label="Increase checkout quantity">+</button>
+      </div>
+    </div>
+    <b id="checkoutTotal">₱700</b>
   </div>
-  <form id="checkoutForm" novalidate>
-    <label>Full Name<input name="name" autocomplete="name" required placeholder="Juan Dela Cruz"></label>
-    <label>Mobile Number<input name="phone" inputmode="tel" autocomplete="tel" required placeholder="09XX XXX XXXX"></label>
-    <label class="wide">Complete Address (House no., Street, Barangay)<textarea name="address" autocomplete="street-address" required placeholder="House no., street, barangay"></textarea></label>
-    <label>City<input name="city" autocomplete="address-level2" required placeholder="Davao City"></label>
-    <label>Province<input name="province" autocomplete="address-level1" required placeholder="Davao del Sur"></label>
-    <label class="wide">Landmark (para sa rider)<input name="landmark" placeholder="e.g. Malapit sa simbahan, may asul na gate"></label>
-    <label class="wide">Payment<select name="payment" required>
-        <option value="">Cash on Delivery / GCash / Bank</option>
-        <option>Cash on Delivery</option>
-        <option>GCash</option>
-        <option>Bank Transfer</option>
-      </select>
-    </label>
+  <form id="checkoutForm" autocomplete="on" novalidate>
+    <label class="wide" for="customerNameInput">Full Name<input id="customerNameInput" name="name" autocomplete="shipping name" required placeholder="Full Name"></label>
+    <label class="wide" for="customerPhoneInput">Mobile Number<input id="customerPhoneInput" name="phone" inputmode="tel" autocomplete="shipping tel" required placeholder="Mobile Number (Valid & Active)"></label>
+    <label class="wide" for="customerEmailInput">Email Address (optional)<input id="customerEmailInput" name="email" type="email" autocomplete="shipping email" placeholder="Email Address (optional for order copy)"></label>
+    <div class="checkout-panel wide"><h3>Shipping Address</h3></div>
+    <label class="wide" for="customerAddressInput">Complete Address (House no., Street, Barangay)<textarea id="customerAddressInput" name="address" autocomplete="shipping street-address" required placeholder="Full Address (House No, Street, Barangay)"></textarea></label>
+    <label for="customerCityInput">City<input id="customerCityInput" name="city" autocomplete="shipping address-level2" required placeholder="City"></label>
+    <label for="customerProvinceInput">Province<input id="customerProvinceInput" name="province" autocomplete="shipping address-level1" required placeholder="Province"></label>
+    <label class="wide" for="customerLandmarkInput">Landmark (para sa rider)<input id="customerLandmarkInput" name="landmark" autocomplete="off" placeholder="Landmark (para sa rider)"></label>
+    <div class="checkout-panel wide"><h3>Shipping Method</h3></div>
+    <div class="checkout-perks wide">
+      <span>Free Shipping</span>
+    </div>
+    <div class="checkout-panel wide"><h3>Payment Method</h3></div>
+    <div class="checkout-perks wide">
+      <span>COD - Cash On Delivery</span>
+    </div>
     <label class="consent wide">
       <input type="checkbox" name="consent" required>
       <span>I agree to share my information for order processing and delivery.</span>
@@ -1629,7 +1993,7 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
     <div class="form-err wide" id="formErr"></div>
   </form>
   <div class="confirm-btn-wrap">
-    <button class="btn btn-primary btn-full" type="button" id="confirmOrderBtn" style="padding:16px;font-size:16px;font-weight:800">✓ Confirm My Order</button>
+    <button class="btn btn-primary btn-full" type="button" id="confirmOrderBtn" style="padding:16px;font-size:16px;font-weight:800" disabled>Complete Order Now <span class="btn-arrow">✓</span></button>
   </div>
 </div>
 
@@ -1651,9 +2015,34 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
 <script>
 (function(){
   var counter=1000+Math.floor(Math.random()*9000), currentPack=null, cartQty=1;
+  var GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyTSgY1CxUdE28sA8BgRNJGqzLUQd-cCTbtn8sOwtpwL_L5Dv3_bvQB3l2T8S59ygA6/exec';
   function fmt(n){return'\u20b1'+n.toLocaleString();}
   function sub(q){return q*550;}
   function tot(q){return sub(q)+150;}
+  function assetFallback(label){
+    var text = (label || 'Dr. Vita').replace(/[<>&]/g,'');
+    var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="720" height="720" viewBox="0 0 720 720">'+
+      '<defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#fff0f3"/><stop offset="1" stop-color="#ef4e71"/></linearGradient></defs>'+
+      '<rect width="720" height="720" rx="56" fill="url(#g)"/>'+
+      '<circle cx="360" cy="280" r="132" fill="#fff" opacity=".82"/>'+
+      '<text x="360" y="265" text-anchor="middle" font-family="Arial, sans-serif" font-size="54" font-weight="800" fill="#d4254c">Dr. Vita</text>'+
+      '<text x="360" y="332" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#5c0d20">'+text+'</text>'+
+      '<text x="360" y="515" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#5c0d20" opacity=".72">Image asset missing</text>'+
+    '</svg>';
+    return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
+  }
+  function installImageFallbacks(){
+    document.querySelectorAll('img[src^="assets/"]').forEach(function(img){
+      function applyFallback(){
+        img.onerror = null;
+        img.src = assetFallback(img.alt || 'Dr. Vita');
+        img.style.objectFit = 'contain';
+      }
+      img.addEventListener('error', applyFallback, {once:true});
+      if(img.complete && img.naturalWidth === 0) applyFallback();
+    });
+  }
+  installImageFallbacks();
 
   function openOverlay(){document.getElementById('overlay').classList.add('on');}
   function closeOverlay(){
@@ -1672,8 +2061,9 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
   }
   function openModal(id){
     var m=document.getElementById(id);
-    m.style.display='block';
+    m.style.display=id==='checkoutModal'?'grid':'block';
     requestAnimationFrame(function(){m.classList.add('open');m.setAttribute('aria-hidden','false');});
+    if(id==='checkoutModal') validateCheckout();
     openOverlay();document.body.style.overflow='hidden';
   }
   function closeModal(id){
@@ -1691,7 +2081,7 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
     // Promo banner — only show on B1T1 pack
     document.getElementById('promoNotice').style.display = currentPromo ? 'block' : 'none';
     // Cart product price line — show unit pack price
-    document.getElementById('cartPrice').textContent = fmt(currentPackPrice)+' / pack · shipping incl.';
+    document.getElementById('cartPrice').textContent = fmt(currentPackPrice)+' / pack · Free Shipping';
     // Totals
     document.getElementById('subtotal').textContent = fmt(p);
     document.getElementById('total').textContent    = fmt(p);
@@ -1699,7 +2089,9 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
     document.getElementById('cartCount').textContent = cartQty > 0 ? cartQty : '';
     // Checkout
     document.getElementById('checkoutQty').textContent   = cartQty + ' × ' + currentPackName;
-    document.getElementById('checkoutTotal').textContent = fmt(p) + ' (shipping incl.)';
+    document.getElementById('checkoutQuantity').textContent = cartQty;
+    document.getElementById('checkoutTotal').textContent = fmt(p);
+    validateCheckout();
   }
 
   // Pack buttons
@@ -1716,6 +2108,24 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
     var total = currentPackPrice * q;
     var label = q + ' × ' + currentPackName;
     return {price:total, label:label, promo:currentPromo};
+  }
+
+  function validateCheckout(){
+    var form=document.getElementById('checkoutForm');
+    var btn=document.getElementById('confirmOrderBtn');
+    if(!form||!btn) return false;
+    var fd=new FormData(form);
+    var name=(fd.get('name')||'').trim();
+    var phone=(fd.get('phone')||'').replace(/\s/g,'').trim();
+    var email=(fd.get('email')||'').trim();
+    var addr=(fd.get('address')||'').trim();
+    var city=(fd.get('city')||'').trim();
+    var prov=(fd.get('province')||'').trim();
+    var consent=fd.get('consent');
+    var emailOk=!email||/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    var ready=!!(currentPack&&name&&/^(09|\+639)\d{9}$/.test(phone)&&emailOk&&addr&&city&&prov&&consent);
+    btn.disabled=!ready;
+    return ready;
   }
 
   // Pack price map
@@ -1751,6 +2161,16 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
     if(cartQty > 1) cartQty--;
     syncUI();
   });
+  document.getElementById('checkoutPlusQty').addEventListener('click',function(){
+    if(!currentPack) return;
+    cartQty++;
+    syncUI();
+  });
+  document.getElementById('checkoutMinusQty').addEventListener('click',function(){
+    if(!currentPack) return;
+    if(cartQty > 1) cartQty--;
+    syncUI();
+  });
 
   document.getElementById('cartButton').addEventListener('click',function(){
     if(!currentPack || currentPackPrice===0){
@@ -1766,7 +2186,14 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
   document.getElementById('closeCart').addEventListener('click',closeDrawer);
   document.getElementById('removeItem').addEventListener('click',function(){currentPack=null;currentPackPrice=0;currentPackName='';currentPromo=false;cartQty=1;document.getElementById('cartCount').textContent='';closeDrawer();});
   document.getElementById('continueBtn').addEventListener('click',function(){closeDrawer();openModal('checkoutModal');});
-  document.getElementById('acceptUpsell').addEventListener('click',function(){setQty(qty+1);closeModal('upsellModal');openModal('checkoutModal');});
+  document.getElementById('acceptUpsell').addEventListener('click',function(){
+    if(currentPack){
+      cartQty++;
+      syncUI();
+    }
+    closeModal('upsellModal');
+    openModal('checkoutModal');
+  });
   document.getElementById('skipUpsell').addEventListener('click',function(){closeModal('upsellModal');openModal('checkoutModal');});
 
   // Confirm button submits the form
@@ -1774,6 +2201,18 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
     var form = document.getElementById('checkoutForm');
     form.dispatchEvent(new Event('submit', {bubbles:true, cancelable:true}));
   });
+  document.getElementById('confirmOrderBtn').innerHTML='Complete Order Now <span class="btn-arrow">&#10003;</span>';
+  document.getElementById('checkoutForm').addEventListener('input',function(){
+    document.getElementById('formErr').textContent='';
+    validateCheckout();
+  });
+  document.getElementById('checkoutForm').addEventListener('change',validateCheckout);
+  validateCheckout();
+  var checkoutSummaryEl=document.querySelector('#checkoutModal .checkout-summary');
+  var checkoutItemRow=document.querySelector('#checkoutModal .checkout-item-row');
+  if(checkoutItemRow&&!checkoutItemRow.querySelector('img')){
+    checkoutItemRow.insertAdjacentHTML('afterbegin','<img class="checkout-summary-img" src="assets/img_02.png" alt="">');
+  }
 
   document.querySelectorAll('.modal-close').forEach(function(btn){
     btn.addEventListener('click',function(){closeModal(btn.dataset.modal);});
@@ -1784,15 +2223,18 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
     document.querySelectorAll('.modal.open').forEach(function(m){closeModal(m.id);});
   });
 
-  document.getElementById('checkoutForm').addEventListener('submit',function(e){
+  document.getElementById('checkoutForm').addEventListener('submit',async function(e){
     e.preventDefault();
+    var submitBtn=document.getElementById('confirmOrderBtn');
     var fd=new FormData(this);
     var name=fd.get('name').trim(),phone=fd.get('phone').trim(),
+        email=(fd.get('email')||'').trim(),
         addr=fd.get('address').trim(),city=fd.get('city').trim(),
-        prov=fd.get('province').trim(),pay=fd.get('payment'),
+        prov=fd.get('province').trim(),pay='Cash on Delivery',
         consent=fd.get('consent'),err='';
     if(!name)err='Please enter your full name.';
     else if(!phone||!/^(09|\+639)\d{9}$/.test(phone.replace(/\s/g,'')))err='Please enter a valid PH mobile number (09XXXXXXXXX).';
+    else if(email&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))err='Please enter a valid email address or leave it blank.';
     else if(!addr)err='Please enter your delivery address.';
     else if(!city)err='Please enter your city.';
     else if(!prov)err='Please enter your province.';
@@ -1803,14 +2245,52 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
     var ref='DHA-'+(counter++);
     var finalPrice = currentPackPrice * cartQty;
     var finalLabel = cartQty+' × '+currentPackName;
+    var orderPayload={
+      ref:ref,
+      name:name,
+      phone:phone,
+      email:email,
+      address:addr,
+      city:city,
+      province:prov,
+      fullAddress:addr+', '+city+', '+prov,
+      landmark:(fd.get('landmark')||'').trim(),
+      pack:currentPackName,
+      qty:cartQty,
+      unitPrice:currentPackPrice,
+      total:finalPrice,
+      payment:pay,
+      shipping:'Free Shipping',
+      source:'Dr. Vita landing page',
+      createdAt:new Date().toISOString()
+    };
+    submitBtn.disabled=true;
+    submitBtn.innerHTML='Submitting Order...';
+    if(GOOGLE_APPS_SCRIPT_URL){
+      try{
+        await fetch(GOOGLE_APPS_SCRIPT_URL,{
+          method:'POST',
+          mode:'no-cors',
+          headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},
+          body:new URLSearchParams(orderPayload).toString()
+        });
+      }catch(sendErr){
+        console.warn('[Dr. Vita Order Submit Failed]',sendErr);
+        document.getElementById('formErr').textContent='Order connection issue. Please try again.';
+        submitBtn.innerHTML='Complete Order Now <span class="btn-arrow">&#10003;</span>';
+        validateCheckout();
+        return;
+      }
+    }
     document.getElementById('customerName').textContent=name.split(' ')[0]||'Mama';
     document.getElementById('orderRef').textContent=ref;
     document.getElementById('confirmedQty').textContent=finalLabel;
-    document.getElementById('confirmedTotal').textContent=fmt(finalPrice)+' (incl. shipping)';
-    document.getElementById('confirmedPay').textContent=fd.get('payment')||'Cash on Delivery';
-    console.log('[Dr. Vita Order]',{ref:ref,name:name,phone:phone,address:addr+', '+city+', '+prov,pack:currentPackName,qty:cartQty,unitPrice:currentPackPrice,total:finalPrice,payment:pay});
+    document.getElementById('confirmedTotal').textContent=fmt(finalPrice)+' · Free Shipping';
+    document.getElementById('confirmedPay').textContent=pay;
+    console.log('[Dr. Vita Order]',orderPayload);
     closeModal('checkoutModal');openModal('confirmModal');
-    console.log('[Dr. Vita Order]',{ref:ref,name:name,phone:phone,address:addr+', '+city+', '+prov,qty:qty,total:tot(qty),payment:pay});
+    submitBtn.innerHTML='Complete Order Now <span class="btn-arrow">&#10003;</span>';
+    validateCheckout();
   });
 
   document.getElementById('backHome').addEventListener('click',function(){
