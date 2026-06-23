@@ -941,7 +941,7 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
   padding:40px 36px;
   box-shadow:0 32px 80px rgba(0,0,0,.22);
   opacity:0;transition:transform .35s var(--ease-bounce),opacity .3s;
-  max-height:90svh;overflow-y:auto;
+  max-height:88svh;overflow-y:scroll;-webkit-overflow-scrolling:touch;
 }
 .modal.open{display:block;transform:translate(-50%,-50%) scale(1);opacity:1}
 .modal .close-btn{position:absolute;top:20px;right:20px}
@@ -1589,6 +1589,7 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
     <label class="wide">Complete Delivery Address<textarea name="address" autocomplete="street-address" required placeholder="House no., street, barangay"></textarea></label>
     <label>City<input name="city" autocomplete="address-level2" required></label>
     <label>Province<input name="province" autocomplete="address-level1" required></label>
+    <label class="wide">Landmark<input name="landmark" placeholder="e.g. Malapit sa simbahan, may asul na gate (para sa JnT rider)"></label>
     <label class="wide">Payment Method
       <select name="payment" required>
         <option value="">Select payment</option>
@@ -1597,7 +1598,6 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
         <option>Bank Transfer</option>
       </select>
     </label>
-    <label class="wide">Delivery Notes<textarea name="notes" placeholder="Optional instructions or landmarks"></textarea></label>
     <label class="consent wide">
       <input type="checkbox" name="consent" required>
       <span>I agree to share my information for order processing and delivery confirmation.</span>
