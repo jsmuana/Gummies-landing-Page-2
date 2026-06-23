@@ -1739,7 +1739,12 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
 
   document.getElementById('closeCart').addEventListener('click',closeDrawer);
   document.getElementById('removeItem').addEventListener('click',function(){currentPack=null;currentPackPrice=0;currentPackName='';currentPromo=false;cartQty=1;document.getElementById('cartCount').textContent='';closeDrawer();});
-  document.getElementById('continueBtn').addEventListener('click',function(){closeDrawer();openModal('checkoutModal');});
+  document.getElementById('continueBtn').addEventListener('click',function(){
+    closeDrawer();
+    openModal('checkoutModal');
+    // FB Pixel - InitiateCheckout
+    if(typeof fbq !== 'undefined'){ fbq('track','InitiateCheckout',{value:getPrice(),currency:'PHP'}); }
+  });
   document.getElementById('acceptUpsell').addEventListener('click',function(){setQty(qty+1);closeModal('upsellModal');openModal('checkoutModal');});
   document.getElementById('skipUpsell').addEventListener('click',function(){closeModal('upsellModal');openModal('checkoutModal');});
 
