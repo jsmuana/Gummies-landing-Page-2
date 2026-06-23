@@ -1586,13 +1586,10 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
   <form id="checkoutForm" novalidate>
     <label>First Name<input name="firstname" autocomplete="given-name" required placeholder="Juan"></label>
     <label>Last Name<input name="lastname" autocomplete="family-name" required placeholder="Dela Cruz"></label>
-    <label>Mobile Number<input name="phone" inputmode="tel" autocomplete="tel" required placeholder="09XX XXX XXXX"></label>
-    <label>Email (optional)<input name="email" type="email" inputmode="email" autocomplete="email" placeholder="juan@email.com"></label>
-    <label class="wide">Complete Address<input name="address" autocomplete="street-address" required placeholder="House no., Street, Lot/Blk"></label>
-    <label>Barangay / Sitio<input name="barangay" required placeholder="Brgy. San Jose"></label>
+    <label class="wide">Mobile Number<input name="phone" inputmode="tel" autocomplete="tel" required placeholder="09XX XXX XXXX"></label>
+    <label class="wide">Complete Address + Barangay<input name="address" autocomplete="street-address" required placeholder="House no., Street, Brgy., Landmark"></label>
     <label>City / Town<input name="city" autocomplete="address-level2" required placeholder="Davao City"></label>
     <label>Province<input name="province" autocomplete="address-level1" required placeholder="Davao del Sur"></label>
-    <label class="wide">Landmark<input name="landmark" placeholder="e.g. Malapit sa palengke, may asul na gate"></label>
     <label class="wide">Payment Method
       <select name="payment" required>
         <option value="">Select payment</option>
@@ -1606,7 +1603,7 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
       <span>I agree to share my information for order processing and delivery confirmation.</span>
     </label>
     <div class="form-err wide" id="formErr"></div>
-    <button class="btn btn-primary btn-full wide" type="submit">Confirm My Order <span class="btn-arrow">→</span></button>
+    <button class="btn btn-primary btn-full wide" type="submit" style="margin-top:8px;padding:16px;font-size:16px">✓ Confirm My Order</button>
   </form>
 </div>
 
@@ -1761,12 +1758,9 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
     var firstname=fd.get('firstname').trim(),
         lastname=fd.get('lastname').trim(),
         phone=fd.get('phone').trim(),
-        email=fd.get('email').trim(),
         addr=fd.get('address').trim(),
-        barangay=fd.get('barangay').trim(),
         city=fd.get('city').trim(),
         prov=fd.get('province').trim(),
-        landmark=fd.get('landmark').trim(),
         pay=fd.get('payment'),
         consent=fd.get('consent'),
         fullname=firstname+' '+lastname,
@@ -1775,7 +1769,6 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
     else if(!lastname)err='Please enter your last name.';
     else if(!phone||!/^(09|\+639)\d{9}$/.test(phone.replace(/\s/g,'')))err='Please enter a valid PH mobile number (09XXXXXXXXX).';
     else if(!addr)err='Please enter your complete address.';
-    else if(!barangay)err='Please enter your barangay.';
     else if(!city)err='Please enter your city.';
     else if(!prov)err='Please enter your province.';
     else if(!pay)err='Please select a payment method.';
