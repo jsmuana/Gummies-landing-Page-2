@@ -1028,14 +1028,42 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
   flex-shrink:0;accent-color:var(--r500);
 }
 .form-err{color:var(--r600);font-size:12px;font-weight:600}
+.phone-wrap{
+  display:flex;align-items:center;
+  border:1.5px solid rgba(0,0,0,.1);
+  border-radius:var(--rad-sm);
+  background:var(--cream);
+  overflow:hidden;
+  transition:border-color .2s,box-shadow .2s;
+}
+.phone-wrap:focus-within{
+  border-color:var(--r400);
+  box-shadow:0 0 0 3px rgba(239,78,113,.12);
+}
+.ph-flag{
+  padding:10px 12px;
+  font-size:13px;font-weight:700;color:var(--ink-soft);
+  background:rgba(0,0,0,.04);
+  border-right:1.5px solid rgba(0,0,0,.08);
+  white-space:nowrap;flex-shrink:0;
+}
+.phone-input{
+  flex:1;padding:10px 12px;
+  border:none!important;box-shadow:none!important;
+  background:transparent;
+  font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);
+  outline:none;
+}
 
 /* Section dividers inside form */
 .form-section-label{
   grid-column:1/-1;
   font-size:11px;font-weight:800;letter-spacing:.08em;
-  text-transform:uppercase;color:var(--ink);
-  padding-top:8px;border-top:1px solid rgba(0,0,0,.07);
+  text-transform:uppercase;
+  color:var(--r600);
+  padding-top:12px;border-top:1px solid rgba(239,78,113,.12);
   margin-top:4px;
+  display:flex;align-items:center;gap:8px;
 }
 .form-section-label:first-child{border-top:none;padding-top:0;margin-top:0}
 
@@ -1639,7 +1667,12 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
     <div class="form-section-label">👤 Customer Information</div>
     <label>First Name<input name="firstname" autocomplete="given-name" required placeholder="Juan"></label>
     <label>Last Name<input name="lastname" autocomplete="family-name" required placeholder="Dela Cruz"></label>
-    <label class="wide">Mobile Number<input name="phone" inputmode="tel" autocomplete="tel" required placeholder="09XX XXX XXXX"></label>
+    <label class="wide">Mobile Number
+      <div class="phone-wrap">
+        <span class="ph-flag">🇵🇭 +63</span>
+        <input name="phone" inputmode="tel" autocomplete="tel" required placeholder="9XX XXX XXXX" class="phone-input">
+      </div>
+    </label>
     <label class="wide">Email Address<input name="email" type="email" inputmode="email" autocomplete="email" placeholder="juan@email.com (optional)"></label>
 
     <div class="form-section-label">📦 Delivery Address</div>
@@ -1664,7 +1697,7 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
       <span>Sumasang-ayon po ako na ibahagi ang aking impormasyon para sa order processing at delivery confirmation.</span>
     </label>
     <div class="form-err wide" id="formErr"></div>
-    <button class="btn btn-primary btn-full wide" type="submit">Confirm My Order ✓</button>
+    <button class="btn btn-primary btn-full wide" type="submit" style="background:linear-gradient(135deg,var(--r500),var(--r600));font-size:16px;padding:16px;letter-spacing:.02em">Confirm My Order ✓</button>
 
   </form>
   </div>
@@ -1838,7 +1871,11 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
     var fullname = firstname+' '+lastname;
     if(!firstname)err='Please enter your first name.';
     else if(!lastname)err='Please enter your last name.';
-    else if(!phone||!/^(09|\+639)\d{9}$/.test(phone.replace(/\s/g,'')))err='Please enter a valid PH mobile number (09XXXXXXXXX).';
+    var rawPhone = phone.replace(/\s/g,'');
+    // Accept 9XXXXXXXXX (10 digits without 0) or 09XXXXXXXXX or +639XXXXXXXXX
+    var validPhone = /^9\d{9}$/.test(rawPhone) || /^09\d{9}$/.test(rawPhone) || /^\+639\d{9}$/.test(rawPhone);
+    if(!phone||!validPhone) err='Please enter a valid PH mobile number.';
+    else
     else if(!addr)err='Please enter your complete address.';
     else if(!barangay)err='Please enter your barangay.';
     else if(!city)err='Please enter your city/town.';
