@@ -960,7 +960,10 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
   box-shadow:0 4px 12px rgba(239,78,113,.4);
 }
 
-.checkout-modal{padding:0;overflow:hidden}
+.checkout-modal{padding:0;overflow:hidden;display:flex;flex-direction:column;max-height:88svh}
+.checkout-modal .checkout-head{flex-shrink:0}
+.checkout-modal .checkout-summary{flex-shrink:0}
+.checkout-modal form{overflow-y:auto;-webkit-overflow-scrolling:touch;flex:1;padding-bottom:20px}
 .checkout-head{
   background:linear-gradient(135deg,var(--r100),var(--blush));
   padding:32px 36px;border-bottom:1px solid rgba(239,78,113,.12);
@@ -1587,7 +1590,8 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
     <label>First Name<input name="firstname" autocomplete="given-name" required placeholder="Juan"></label>
     <label>Last Name<input name="lastname" autocomplete="family-name" required placeholder="Dela Cruz"></label>
     <label class="wide">Mobile Number<input name="phone" inputmode="tel" autocomplete="tel" required placeholder="09XX XXX XXXX"></label>
-    <label class="wide">Complete Address + Barangay<input name="address" autocomplete="street-address" required placeholder="House no., Street, Brgy., Landmark"></label>
+    <label class="wide">Complete Address<input name="address" autocomplete="street-address" required placeholder="House no., Street, Barangay"></label>
+    <label class="wide">Landmark<input name="landmark" placeholder="e.g. Malapit sa simbahan, may asul na gate — para sa JnT rider"></label>
     <label>City / Town<input name="city" autocomplete="address-level2" required placeholder="Davao City"></label>
     <label>Province<input name="province" autocomplete="address-level1" required placeholder="Davao del Sur"></label>
     <label class="wide">Payment Method
@@ -1761,6 +1765,7 @@ footer > p{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:
         addr=fd.get('address').trim(),
         city=fd.get('city').trim(),
         prov=fd.get('province').trim(),
+        landmark=fd.get('landmark').trim(),
         pay=fd.get('payment'),
         consent=fd.get('consent'),
         fullname=firstname+' '+lastname,
